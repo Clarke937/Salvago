@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:fitsSystemWindows="true"
+    tools:context=".Access">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:padding="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/storelogo"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_store"
+            android:tint="@color/white"
+            android:layout_marginTop="100dp"
+            />
+
+        <TextView
+            android:id="@+id/headertext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Acceso Pymes"
+            android:textColor="@color/white"
+            android:textSize="32dp"
+            android:layout_below="@id/storelogo"
+            android:textAlignment="center"
+            />
+
+        <EditText
+            android:id="@+id/input_company"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:layout_below="@id/headertext"
+            android:layout_marginTop="24dp"
+            android:hint="Compañia"
+            android:textColorHint="#60FFFFFF"
+            android:textColor="@color/white"
+            android:lines="1"
+            android:drawableLeft="@drawable/ic_superviso"
+            android:drawablePadding="10dp"
+            android:drawableTint="#60FFFFFF"
+            />
+        <EditText
+            android:id="@+id/input_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:layout_below="@id/input_company"
+            android:layout_marginTop="12dp"
+            android:hint="Clave de seguridad"
+            android:textColorHint="#60FFFFFF"
+            android:inputType="textPassword"
+            android:textColor="@color/white"
+            android:lines="1"
+            android:drawableLeft="@drawable/ic_lock"
+            android:drawablePadding="10dp"
+            android:drawableTint="#60FFFFFF"
+            />
+
+
+    </RelativeLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_key"
+        android:tint="@color/white"
+        />
+
+</android.support.design.widget.CoordinatorLayout>

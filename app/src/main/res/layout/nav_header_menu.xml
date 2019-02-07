@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:paddingTop="48dp"
+    android:paddingBottom="8dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:src="@drawable/logo1"
+        android:scaleType="fitCenter"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        />
+
+    <LinearLayout
+        android:background="@drawable/search_shape"
+        android:orientation="horizontal"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/searchbox"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Que deseas buscar?"
+            android:layout_gravity="center_vertical"
+            android:padding="5dp"
+            android:textColor="@color/colorSecondaryText"
+            android:background="@color/transparent"
+            android:inputType="textFilter"
+            android:textColorHint="#ccc"
+            />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_search"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:backgroundTint="@color/Almostwhite"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

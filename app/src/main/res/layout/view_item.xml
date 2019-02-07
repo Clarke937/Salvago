@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:padding="24dp"
+    android:clickable="true"
+    android:background="?attr/selectableItemBackground"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/ic_bell_on"
+        android:scaleType="fitCenter"
+        android:tint="@color/colorSecondaryText"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        />
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lines="1"
+        android:textColor="@color/colorText"
+        android:ellipsize="end"
+        android:text="Header"
+        android:layout_toRightOf="@id/icon"
+        android:layout_marginLeft="16dp"
+        />
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorSecondaryText"
+        android:text="lorem ipsum dolor siit asdnalkjdlas"
+        android:layout_toRightOf="@id/icon"
+        android:layout_below="@id/header"
+        android:layout_marginLeft="16dp"
+        />
+
+</RelativeLayout>

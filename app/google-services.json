@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "490257703475",
+    "firebase_url": "https://salva-go.firebaseio.com",
+    "project_id": "salva-go",
+    "storage_bucket": "salva-go.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:490257703475:android:d10fbbdf33f1217b",
+        "android_client_info": {
+          "package_name": "com.mastercode.salvago"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "490257703475-vktdup0h5j5guet3eichh4dmv5e9vbd1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mastercode.salvago",
+            "certificate_hash": "74aea59cbec378039a9cd96bdf71260df7cc745b"
+          }
+        },
+        {
+          "client_id": "490257703475-5uagr65j417jk8obcveo7djqjlgieh1l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcfospG34a6hGdtPpp97Htn3ExDDLrT_0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "490257703475-5uagr65j417jk8obcveo7djqjlgieh1l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

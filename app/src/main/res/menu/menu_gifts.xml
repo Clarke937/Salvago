@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.mastercode.salvago.Giftcards"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_moregifts"
+        android:orderInCategory="100"
+        android:title="Ganar Giftcards"
+        android:icon="@drawable/ic_more_giftcard_white"
+        app:showAsAction="ifRoom" />
+</menu>
