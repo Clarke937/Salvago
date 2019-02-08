@@ -12,8 +12,11 @@ import com.mastercode.salvago.Map;
 
 public class AppNavigation {
 
-    public static void goFanpage(Context ctx){
-        ctx.startActivity(new Intent(ctx, Fanpage.class));
+    public static void goFanpage(String type, String company, Context ctx){
+        Intent i = new Intent(ctx, Fanpage.class);
+        i.putExtra("id",company);
+        i.putExtra("type",type);
+        ctx.startActivity(i);
     }
 
     public static void goHome(Context ctx){

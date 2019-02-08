@@ -22,10 +22,12 @@ public class Home_Companies extends RecyclerView.Adapter<Home_Companies.VwHolder
 
     private Context ctx;
     private List<Company> companies;
+    private String type;
 
-    public Home_Companies(Context c, List<Company> com){
+    public Home_Companies(Context c, List<Company> com, String typ){
         this.ctx = c;
         this.companies = com;
+        this.type = typ;
     }
 
     @NonNull
@@ -37,7 +39,7 @@ public class Home_Companies extends RecyclerView.Adapter<Home_Companies.VwHolder
 
     @Override
     public void onBindViewHolder(@NonNull VwHolder vwHolder, int i) {
-        Company com = companies.get(i);
+        final Company com = companies.get(i);
         vwHolder.tvName.setText(com.companyname);
         vwHolder.tvCity.setText(new Localbase().SalvadorCities().get(com.city));
         vwHolder.tvDescript.setText(com.descripcion);
@@ -49,7 +51,7 @@ public class Home_Companies extends RecyclerView.Adapter<Home_Companies.VwHolder
         vwHolder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AppNavigation.goFanpage(ctx);
+                AppNavigation.goFanpage(type,com.id,ctx);
             }
         });
     }

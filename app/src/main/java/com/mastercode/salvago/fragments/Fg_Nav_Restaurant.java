@@ -33,7 +33,6 @@ public class Fg_Nav_Restaurant extends Fragment implements ValueEventListener {
     Home_Companies adapter;
     List<Company> companies;
     StorageReference storage;
-    static int counter = 0;
 
 
     @Nullable
@@ -49,7 +48,7 @@ public class Fg_Nav_Restaurant extends Fragment implements ValueEventListener {
         rcv.setHasFixedSize(true);
 
         companies = new ArrayList<>();
-        adapter = new Home_Companies(this.getContext(),companies);
+        adapter = new Home_Companies(this.getContext(),companies,"restaurants");
         rcv.setAdapter(adapter);
 
         ref = new Cloud().getRestaurants();
@@ -61,20 +60,19 @@ public class Fg_Nav_Restaurant extends Fragment implements ValueEventListener {
 
     public void getData(){
         ref.addListenerForSingleValueEvent(this);
-
     }
 
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
         companies.clear();
-        counter = 0;
 
         for(DataSnapshot d : dataSnapshot.getChildren()){
             final Company com = new Company();
             com.companyname = d.child("info").child("title").getValue().toString();
             com.descripcion = d.child("info").child("description").getValue().toString();
             com.city = Integer.parseInt(d.child("info").child("location").child("city").getValue().toString());
+            com.id = d.getKey();
 
             storage.child(d.getKey() + ".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override

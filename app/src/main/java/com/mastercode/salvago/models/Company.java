@@ -7,6 +7,7 @@ import java.util.List;
 public class Company {
 
     public int city;
+    public String id;
     public Uri banner;
     public String twitter;
     public String website;

@@ -31,4 +31,10 @@ public class Cloud {
         return ref.child("companies").child(companytype).child(company).child("visits");
     }
 
+    public DatabaseReference getMenuOfCompany(String companytype, String company){
+        return ref.child("companies").child(companytype).child(company).child("menu");
+    }
+
+
+
 }

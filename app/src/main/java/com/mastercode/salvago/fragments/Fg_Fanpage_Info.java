@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.mastercode.salvago.Fanpage;
 import com.mastercode.salvago.R;
 import com.mastercode.salvago.adapters.Fanpage_info;
 import com.mastercode.salvago.database.Cloud;
@@ -47,7 +48,7 @@ public class Fg_Fanpage_Info extends Fragment implements ValueEventListener {
         adapter = new Fanpage_info(this.getContext(), items);
         listview.setAdapter(adapter);
 
-        DatabaseReference ref = new Cloud().getRestaurantInfo("@testcompany");
+        DatabaseReference ref = new Cloud().getRestaurantInfo(Fanpage.companyid);
         ref.addListenerForSingleValueEvent(this);
 
         return v;
