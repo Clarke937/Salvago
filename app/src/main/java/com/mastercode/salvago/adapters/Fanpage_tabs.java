@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.mastercode.salvago.fragments.Fg_Fanpage_Info;
 import com.mastercode.salvago.fragments.Fg_Fanpage_Menu;
+import com.mastercode.salvago.fragments.Fg_Fanpage_Rating;
 
 public class Fanpage_tabs extends FragmentPagerAdapter {
 
@@ -28,6 +29,8 @@ public class Fanpage_tabs extends FragmentPagerAdapter {
                 return new Fragment();
             case 4:
                 return new Fragment();
+            case 5:
+                return new Fg_Fanpage_Rating();
             default:
                 return new Fragment();
         }
@@ -35,7 +38,7 @@ public class Fanpage_tabs extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 5;
+        return 6;
     }
 
     @Nullable
@@ -52,6 +55,8 @@ public class Fanpage_tabs extends FragmentPagerAdapter {
             case 3:
                 return "FOTOS";
             case 4:
+                return "UBICACIONES";
+            case 5:
                 return "OPINIONES";
             default:
                 return "";

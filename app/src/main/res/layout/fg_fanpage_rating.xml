@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <at.grabner.circleprogress.CircleProgressView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_centerHorizontal="true"
+            app:cpv_barColor="@color/colorPrimary"
+            app:cpv_direction="CW"
+            app:cpv_barWidth="20dp"
+            app:cpv_value="5"
+            app:cpv_text="10"
+            app:cpv_maxValue="10"
+            app:cpv_minValueAllowed="1"
+            app:cpv_autoTextSize="true"
+            app:cpv_autoTextColor="true"
+            app:cpv_blockCount="10"
+            app:cpv_barStrokeCap="Round"
+            app:cpv_rimColor="@color/transparent"
+            />
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>

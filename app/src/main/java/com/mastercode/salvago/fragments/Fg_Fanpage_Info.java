@@ -73,15 +73,10 @@ public class Fg_Fanpage_Info extends Fragment implements ValueEventListener {
             telephones = d.child("telephones").getValue().toString();
         }
 
-        /*PRICES*/
-        String min = d.child("prices").child("min").getValue().toString();
-        String max = d.child("prices").child("max").getValue().toString();
-        String prices = "$" + min + " - $" + max;
 
         /*POPULATE ITEMS*/
         items.add(new ItemOfList("Compañia:",title,R.drawable.ic_store));
         items.add(new ItemOfList("Descripcion:",descripcion,R.drawable.ic_quote));
-        items.add(new ItemOfList("Rango de Precios:",prices,R.drawable.ic_dollar));
         items.add(new ItemOfList("Numeros Telefonicos:",telephones.trim(),R.drawable.ic_phone));
         items.add(new ItemOfList("Facebook:",fb,R.drawable.ic_facebook));
         items.add(new ItemOfList("Pagina Web:",website,R.drawable.ic_globe));
