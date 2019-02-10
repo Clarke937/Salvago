@@ -35,6 +35,13 @@ public class Cloud {
         return ref.child("companies").child(companytype).child(company).child("menu");
     }
 
+    public DatabaseReference getPicsOfCompany(String type,String company){
+        return ref.child("companies").child(type).child(company).child("pics");
+    }
+
+    public DatabaseReference getLocationsOfCompany(String type,String company){
+        return ref.child("companies").child(type).child(company).child("locations");
+    }
 
 
 }

@@ -24,4 +24,8 @@ public class Cloudfiles {
         return ref.child("banners").child(id);
     }
 
+    public StorageReference getCompanyPics(String companyid){
+        return ref.child("companies").child(companyid);
+    }
+
 }

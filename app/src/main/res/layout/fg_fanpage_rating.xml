@@ -1,34 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical"
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
 
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="match_parent">
 
-        <at.grabner.circleprogress.CircleProgressView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_centerHorizontal="true"
-            app:cpv_barColor="@color/colorPrimary"
-            app:cpv_direction="CW"
-            app:cpv_barWidth="20dp"
-            app:cpv_value="5"
-            app:cpv_text="10"
-            app:cpv_maxValue="10"
-            app:cpv_minValueAllowed="1"
-            app:cpv_autoTextSize="true"
-            app:cpv_autoTextColor="true"
-            app:cpv_blockCount="10"
-            app:cpv_barStrokeCap="Round"
-            app:cpv_rimColor="@color/transparent"
+        <RelativeLayout
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+
+            <at.grabner.circleprogress.CircleProgressView
+                android:id="@+id/ratingbar"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="0dp"
+                app:cpv_autoTextColor="true"
+                app:cpv_autoTextSize="true"
+                app:cpv_barColor="@color/colorAccent"
+                app:cpv_barStartEndLine="None"
+                app:cpv_barStartEndLineColor="@color/transparent"
+                app:cpv_barStrokeCap="Round"
+                app:cpv_barWidth="20dp"
+                app:cpv_direction="CW"
+                app:cpv_innerContourColor="@color/transparent"
+                app:cpv_maxValue="10"
+                app:cpv_minValueAllowed="1"
+                app:cpv_outerContourColor="@color/transparent"
+                app:cpv_rimColor="@color/transparent"
+                app:cpv_startAngle="180"
+                app:cpv_text="Exelent"
+                app:cpv_textMode="Text"
+                app:cpv_value="5" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_marginTop="-50dp"
+            android:padding="8dp"
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Opinion de los usuarios"
+            android:textSize="24dp"
             />
 
-    </RelativeLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_marginTop="4dp"
+                android:padding="8dp"
+                android:background="@drawable/search_shape"
+                android:hint="Que te parecio el lugar?"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <RatingBar
+                android:layout_marginTop="4dp"
+                android:numStars="5"
+                android:max="5"
+                android:rating="5"
+                android:stepSize="1"
+                style="?attr/ratingBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/white"
+                android:text="Publicar"
+                android:backgroundTint="@color/colorPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/list"
+            android:nestedScrollingEnabled="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
 
 
-</LinearLayout>
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>
+
+

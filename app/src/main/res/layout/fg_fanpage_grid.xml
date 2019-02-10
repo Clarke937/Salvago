@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <GridView
+        android:layout_margin="8dp"
+        android:id="@+id/grid"
+        android:numColumns="2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:nestedScrollingEnabled="true"
+        android:horizontalSpacing="8dp"
+        android:verticalSpacing="8dp"
+        android:scrollbars="none"
+        android:listSelector="@color/transparent"
+        >
+    </GridView>
+</android.support.design.widget.CoordinatorLayout>

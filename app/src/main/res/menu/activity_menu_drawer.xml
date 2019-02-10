@@ -31,7 +31,7 @@
             android:title="Servicios" />
     </group>
 
-    <item android:title="Accesso PyMEs">
+    <item android:title="Accesso Empresas">
         <menu>
             <item
                 android:id="@+id/nav_new"

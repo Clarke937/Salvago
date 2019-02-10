@@ -8,6 +8,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class Map extends FragmentActivity implements OnMapReadyCallback {
@@ -34,6 +35,7 @@ public class Map extends FragmentActivity implements OnMapReadyCallback {
         LatLng position = new LatLng(lat,lon);
         mMap.addMarker(new MarkerOptions().position(position).title("Retana House"));
         mMap.addMarker(new MarkerOptions().position(new LatLng(13.6704175,-89.2933809)).title("Sucursal"));
+
 
         mMap.setMinZoomPreference(10.0f);
         mMap.setMaxZoomPreference(20.0f);

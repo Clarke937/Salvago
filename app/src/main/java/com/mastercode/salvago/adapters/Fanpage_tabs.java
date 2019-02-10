@@ -6,7 +6,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.mastercode.salvago.fragments.Fg_Fanpage_Info;
+import com.mastercode.salvago.fragments.Fg_Fanpage_Locations;
 import com.mastercode.salvago.fragments.Fg_Fanpage_Menu;
+import com.mastercode.salvago.fragments.Fg_Fanpage_Pics;
 import com.mastercode.salvago.fragments.Fg_Fanpage_Rating;
 
 public class Fanpage_tabs extends FragmentPagerAdapter {
@@ -26,9 +28,9 @@ public class Fanpage_tabs extends FragmentPagerAdapter {
             case 2:
                 return new Fragment();
             case 3:
-                return new Fragment();
+                return new Fg_Fanpage_Pics();
             case 4:
-                return new Fragment();
+                return new Fg_Fanpage_Locations();
             case 5:
                 return new Fg_Fanpage_Rating();
             default:

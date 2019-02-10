@@ -5,6 +5,25 @@ import java.util.Map;
 
 public class Localbase {
 
+    public Map<Integer,String> SalvadorDepartaments(){
+        Map<Integer,String> departaments = new HashMap<Integer,String>();
+        departaments.put(1, "Ahuachapan");
+        departaments.put(2, "Santa Ana");
+        departaments.put(3, "Sonsonate");
+        departaments.put(4, "Chalatenango");
+        departaments.put(5, "La Libertad");
+        departaments.put(6, "San Salvador");
+        departaments.put(7, "Cuscatlán");
+        departaments.put(8, "Cabañas");
+        departaments.put(9, "La Paz");
+        departaments.put(10, "San Vicente");
+        departaments.put(11, "Usulután");
+        departaments.put(12, "San Miguel");
+        departaments.put(13, "Morazán");
+        departaments.put(14, "La Unión");
+        return departaments;
+    }
+
     public Map<Integer,String> SalvadorCities(){
 
         Map<Integer,String> cities = new HashMap<Integer,String>();

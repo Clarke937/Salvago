@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:hint="Que deseas buscar?"
             android:layout_gravity="center_vertical"
-            android:padding="5dp"
+            android:paddingLeft="8dp"
             android:textColor="@color/colorSecondaryText"
             android:background="@color/transparent"
             android:inputType="textFilter"
@@ -47,6 +47,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:backgroundTint="@color/Almostwhite"
+            android:clickable="false"
             />
 
     </LinearLayout>
