@@ -33,13 +33,9 @@ public class Map extends FragmentActivity implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         LatLng position = new LatLng(lat,lon);
-        mMap.addMarker(new MarkerOptions().position(position).title("Retana House"));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(13.6704175,-89.2933809)).title("Sucursal"));
-
-
+        mMap.addMarker(new MarkerOptions().position(position).title(""));
         mMap.setMinZoomPreference(10.0f);
         mMap.setMaxZoomPreference(20.0f);
-
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position,15));
     }
 }

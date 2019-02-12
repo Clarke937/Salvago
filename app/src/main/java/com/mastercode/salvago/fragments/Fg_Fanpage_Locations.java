@@ -37,7 +37,6 @@ public class Fg_Fanpage_Locations extends Fragment implements ValueEventListener
     }
 
     public View init(View v){
-
         locations = new ArrayList<>();
         adapter = new Fanpage_Locations(this.getContext(),locations);
         listview = v.findViewById(R.id.list);

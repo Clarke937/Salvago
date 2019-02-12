@@ -20,6 +20,7 @@ public class Company {
     public String descripcion;
     public List<Integer> telephones;
     public List<LatLng> coordinates;
+    public String telephone;
 
     public Company(){
 

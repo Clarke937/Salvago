@@ -7,6 +7,7 @@ import android.os.Bundle;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.mastercode.salvago.tools.AppNavigation;
+import com.mastercode.salvago.tools.MySession;
 
 public class MainActivity extends AppCompatActivity {
 

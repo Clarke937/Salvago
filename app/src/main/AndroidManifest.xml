@@ -66,7 +66,7 @@
             android:name=".Fanpage"
             android:label="@string/title_activity_fanpage"
             android:parentActivityName=".Home"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.TransparentTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.mastercode.salvago.Home" />

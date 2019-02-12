@@ -41,8 +41,13 @@ public class Home_Companies extends RecyclerView.Adapter<Home_Companies.VwHolder
     public void onBindViewHolder(@NonNull VwHolder vwHolder, int i) {
         final Company com = companies.get(i);
         vwHolder.tvName.setText(com.companyname);
-        vwHolder.tvCity.setText(new Localbase().SalvadorCities().get(com.city));
         vwHolder.tvDescript.setText(com.descripcion);
+
+        if(com.telephone != null){
+            vwHolder.tvPhone.setText(com.telephone);
+        }else{
+            vwHolder.tvPhone.setText("N/A");
+        }
 
         if(com.banner != null){
             Glide.with(ctx).load(com.banner).into(vwHolder.image);
@@ -63,14 +68,14 @@ public class Home_Companies extends RecyclerView.Adapter<Home_Companies.VwHolder
 
     public class VwHolder extends RecyclerView.ViewHolder{
 
-        TextView tvName, tvCity, tvDescript;
+        TextView tvName, tvPhone, tvDescript;
         CardView card;
         ImageView image;
 
         public VwHolder(@NonNull View itemView) {
             super(itemView);
             image = itemView.findViewById(R.id.banner);
-            tvCity = itemView.findViewById(R.id.city);
+            tvPhone = itemView.findViewById(R.id.phone);
             tvName = itemView.findViewById(R.id.companyname);
             tvDescript = itemView.findViewById(R.id.slogan);
             card = itemView.findViewById(R.id.card);

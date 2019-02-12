@@ -1,13 +1,9 @@
 package com.mastercode.salvago;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.design.widget.BottomSheetDialog;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.app.AlertDialog;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -23,13 +19,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.inputmethod.InputMethodManager;
 
-import com.mastercode.salvago.fragments.Fg_Nav_Hotel;
+import com.mastercode.salvago.fragments.Fg_Home_Navigation;
 import com.mastercode.salvago.fragments.Fg_Nav_Promos;
-import com.mastercode.salvago.fragments.Fg_Nav_Restaurant;
-import com.mastercode.salvago.fragments.Fg_Nav_Services;
-import com.mastercode.salvago.fragments.Fg_Nav_Stores;
-import com.mastercode.salvago.fragments.Fg_Nav_Tourism;
 import com.mastercode.salvago.tools.AppNavigation;
+import com.mastercode.salvago.tools.MySession;
 import com.mastercode.salvago.tools.Popups;
 
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -68,8 +61,9 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         navigationView.setNavigationItemSelectedListener(this);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
         headerview = navigationView.getHeaderView(0);
+
+        ChangeFragment(MySession.home_fragment);
     }
 
     @Override
@@ -81,15 +75,12 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             AlertDialog dialog = new Popups(this).CloseApp(new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    finish();
+                    finishAffinity();
                 }
             });
             dialog.show();
         }
     }
-
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu m) {
@@ -147,28 +138,19 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     public void ChangeFragment(int index){
         Fragment frag = null;
         FragmentManager manager = getSupportFragmentManager();
+        MySession.home_fragment = index;
 
-        switch (index){
-            case 0:
-                frag = new Fg_Nav_Promos();
-                break;
-            case 1:
-                frag = new Fg_Nav_Restaurant();
-                break;
-            case 2:
-                frag = new Fg_Nav_Tourism();
-                break;
-            case 3:
-                frag = new Fg_Nav_Hotel();
-                break;
-            case 4:
-                frag = new Fg_Nav_Stores();
-                break;
-            case 5:
-                frag = new Fg_Nav_Services();
-                break;
+        Bundle bun = new Bundle();
+        bun.putInt("option", index);
+
+        if(index == 0){
+            frag = new Fg_Nav_Promos();
+        }else if(index > 0){
+            frag = new Fg_Home_Navigation();
         }
 
+
+        frag.setArguments(bun);
         manager.beginTransaction().replace(R.id.fgcontainer,frag).commit();
         drawer.closeDrawer(GravityCompat.START);
     }

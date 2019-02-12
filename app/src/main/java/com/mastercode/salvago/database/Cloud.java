@@ -23,6 +23,23 @@ public class Cloud {
         return ref.child("companies").child("restaurants");
     }
 
+    public DatabaseReference getHotels(){
+        return ref.child("companies").child("hotels");
+    }
+
+    public DatabaseReference getServices(){
+        return ref.child("companies").child("services");
+    }
+
+    public DatabaseReference getShops(){
+        return ref.child("companies").child("shops");
+    }
+
+    public DatabaseReference getTourist(){
+        return ref.child("companies").child("tourist");
+    }
+
+
     public DatabaseReference getRestaurantInfo(String name){
         return ref.child("companies").child("restaurants").child(name).child("info");
     }

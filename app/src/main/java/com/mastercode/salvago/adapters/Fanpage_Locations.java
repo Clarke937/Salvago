@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.mastercode.salvago.R;
 import com.mastercode.salvago.database.Localbase;
 import com.mastercode.salvago.models.Location;
+import com.mastercode.salvago.tools.AppNavigation;
 
 import java.util.List;
 
@@ -61,6 +62,7 @@ public class Fanpage_Locations extends BaseAdapter implements View.OnClickListen
             tvHeader.setText("Unica sucursal");
         }
 
+        convertView.setTag(loca);
         convertView.setOnClickListener(this);
         return convertView;
     }
@@ -68,6 +70,7 @@ public class Fanpage_Locations extends BaseAdapter implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-
+        Location loca = (Location) v.getTag();
+        AppNavigation.goMap(ctx, loca.latitud, loca.longitud);
     }
 }
