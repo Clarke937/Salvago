@@ -97,8 +97,6 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         return super.onOptionsItemSelected(item);
     }
 
-
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -125,6 +123,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                 ChangeFragment(5);
                 break;
             case R.id.nav_new:
+                AppNavigation.goRegister(this);
                 break;
             case R.id.nav_login:
                 AppNavigation.goAccess(this);
@@ -149,10 +148,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             frag = new Fg_Home_Navigation();
         }
 
-
         frag.setArguments(bun);
         manager.beginTransaction().replace(R.id.fgcontainer,frag).commit();
         drawer.closeDrawer(GravityCompat.START);
     }
-
 }

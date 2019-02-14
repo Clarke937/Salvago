@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:fitsSystemWindows="true"
+    tools:context=".Register">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="Paso #3: Formas de Contacto"
+                android:textAlignment="center"
+                android:textSize="18dp"
+                android:textColor="@color/white"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:background="@drawable/shape_step"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:src="@drawable/ic_customer_support"
+                android:tint="@color/white"
+                />
+
+            <EditText
+                android:layout_marginTop="12dp"
+                android:id="@+id/input_facebook"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:hint="Facebook"
+                android:textColorHint="#60FFFFFF"
+                android:textColor="@color/white"
+                android:drawableLeft="@drawable/ic_f_facebook"
+                android:drawablePadding="10dp"
+                android:drawableTint="#60FFFFFF"
+                android:inputType="textEmailAddress"
+                />
+            <EditText
+                android:layout_marginTop="12dp"
+                android:id="@+id/input_twitter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:hint="Twitter"
+                android:textColorHint="#60FFFFFF"
+                android:textColor="@color/white"
+                android:drawableLeft="@drawable/ic_twitter"
+                android:drawablePadding="10dp"
+                android:drawableTint="#60FFFFFF"
+                android:inputType="textEmailAddress"
+                />
+            <EditText
+                android:layout_marginTop="12dp"
+                android:id="@+id/input_instagram"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:hint="Twitter"
+                android:textColorHint="#60FFFFFF"
+                android:textColor="@color/white"
+                android:drawableLeft="@drawable/ic_instagram_outline"
+                android:drawablePadding="10dp"
+                android:drawableTint="#60FFFFFF"
+                android:inputType="textEmailAddress"
+                />
+            <EditText
+                android:layout_marginTop="12dp"
+                android:id="@+id/input_webpage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:hint="Sitio web"
+                android:textColorHint="#60FFFFFF"
+                android:textColor="@color/white"
+                android:drawableLeft="@drawable/ic_globe"
+                android:drawablePadding="10dp"
+                android:drawableTint="#60FFFFFF"
+                android:inputType="textUri"
+                />
+            <EditText
+                android:layout_marginTop="12dp"
+                android:id="@+id/input_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:hint="Numero de telefono"
+                android:textColorHint="#60FFFFFF"
+                android:textColor="@color/white"
+                android:drawableLeft="@drawable/ic_phone"
+                android:drawablePadding="10dp"
+                android:drawableTint="#60FFFFFF"
+                android:inputType="phone"
+                />
+
+            <TextView
+                android:id="@+id/step_two_error"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Todos los campos son obligatorios!"
+                android:textColor="@color/colorAccent"
+                android:drawableLeft="@drawable/ic_warning"
+                android:drawableTint="@color/colorAccent"
+                android:gravity="center_vertical"
+                android:drawablePadding="8dp"
+                android:visibility="invisible"
+                />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabStep2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_arrow_next"
+        android:tint="@color/white"
+        />
+
+</android.support.design.widget.CoordinatorLayout>

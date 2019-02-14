@@ -17,10 +17,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".Register"
+            android:label="@string/title_activity_register"
+            android:parentActivityName=".Home"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mastercode.salvago.Home" />
+        </activity>
+        <activity
             android:name=".Giftcards"
             android:label="Tarjetas de Regalo"
-            android:parentActivityName=".Home"
-            >
+            android:parentActivityName=".Home">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.mastercode.salvago.Access" />
@@ -75,7 +83,8 @@
             android:name=".Home"
             android:label="@string/title_activity_menu"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

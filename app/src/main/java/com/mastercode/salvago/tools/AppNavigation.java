@@ -9,6 +9,7 @@ import com.mastercode.salvago.Fanpage;
 import com.mastercode.salvago.Giftcards;
 import com.mastercode.salvago.Home;
 import com.mastercode.salvago.Map;
+import com.mastercode.salvago.Register;
 
 public class AppNavigation {
 
@@ -41,5 +42,9 @@ public class AppNavigation {
         ctx.startActivity(i);
     }
 
+    public static void goRegister(Context ctx){
+        Intent i = new Intent(ctx, Register.class);
+        ctx.startActivity(i);
+    }
 
 }

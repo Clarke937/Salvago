@@ -1,9 +1,22 @@
 package com.mastercode.salvago.database;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Localbase {
+
+
+    public List<String> CompanyType(){
+        List<String> types = new ArrayList<>();
+        types.add("Restaurante");
+        types.add("Hospedaje");
+        types.add("Sitio Turistico");
+        types.add("Centro de servicio");
+        types.add("Tienda");
+        return types;
+    }
 
     public Map<Integer,String> SalvadorDepartaments(){
         Map<Integer,String> departaments = new HashMap<Integer,String>();
@@ -23,6 +36,31 @@ public class Localbase {
         departaments.put(14, "La Unión");
         return departaments;
     }
+
+    public Map<Integer,String> getCitiesByDepartament(int depa){
+        Map<Integer,String> cities = new HashMap<Integer,String>();
+        int min = 0;
+        int max = 0;
+        switch (depa){
+            case 1:
+                min = 1; max = 12;
+                break;
+            case 2:
+                min = 13; max = 25;
+                break;
+            case 3:
+                min = 26; max = 41;
+                break;
+        }
+
+        for (int i = min; i <= max; i++){
+            String c = SalvadorCities().get(i);
+            cities.put(i,c);
+        }
+
+        return cities;
+    }
+
 
     public Map<Integer,String> SalvadorCities(){
 
