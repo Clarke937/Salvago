@@ -19,7 +19,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:text="Paso #3: Formas de Contacto"
+                android:text="Paso #4: Credenciales de Seguridad"
                 android:textAlignment="center"
                 android:textSize="18dp"
                 android:textColor="@color/white"
@@ -36,81 +36,52 @@
                 android:layout_marginTop="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:src="@drawable/ic_customer_support"
+                android:src="@drawable/ic_lock"
                 android:tint="@color/white"
                 />
 
-            <TextView
-                android:layout_marginTop="12dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/colorLightPrimary"
-                android:text="Puedes omitir este paso"
-                android:drawableLeft="@drawable/ic_info"
-                android:drawableTint="@color/colorLightPrimary"
-                android:drawablePadding="8dp"
-                android:gravity="center_vertical"
-                android:textSize="18dp"
-                android:layout_gravity="center_horizontal"
-                />
-
             <EditText
                 android:layout_marginTop="12dp"
-                android:id="@+id/input_facebook"
+                android:id="@+id/input_correo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
-                android:hint="Facebook"
+                android:hint="Correo Electronico"
                 android:textColorHint="#60FFFFFF"
                 android:textColor="@color/white"
-                android:drawableLeft="@drawable/ic_f_facebook"
+                android:drawableLeft="@drawable/ic_email"
                 android:drawablePadding="10dp"
                 android:drawableTint="#60FFFFFF"
                 android:inputType="textEmailAddress"
                 />
             <EditText
                 android:layout_marginTop="12dp"
-                android:id="@+id/input_twitter"
+                android:id="@+id/input_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
-                android:hint="Twitter"
+                android:hint="Clave de Seguridad"
                 android:textColorHint="#60FFFFFF"
                 android:textColor="@color/white"
-                android:drawableLeft="@drawable/ic_twitter"
+                android:drawableLeft="@drawable/ic_key"
                 android:drawablePadding="10dp"
                 android:drawableTint="#60FFFFFF"
-                android:inputType="textEmailAddress"
+                android:inputType="textPassword"
                 />
             <EditText
                 android:layout_marginTop="12dp"
-                android:id="@+id/input_instagram"
+                android:id="@+id/input_repeat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
-                android:hint="Twitter"
+                android:hint="Repetir clave de seguridad"
                 android:textColorHint="#60FFFFFF"
                 android:textColor="@color/white"
-                android:drawableLeft="@drawable/ic_instagram_outline"
+                android:drawableLeft="@drawable/ic_key"
                 android:drawablePadding="10dp"
                 android:drawableTint="#60FFFFFF"
-                android:inputType="textEmailAddress"
+                android:inputType="textPassword"
                 />
-            <EditText
-                android:layout_marginTop="12dp"
-                android:id="@+id/input_webpage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:hint="Sitio web"
-                android:textColorHint="#60FFFFFF"
-                android:textColor="@color/white"
-                android:drawableLeft="@drawable/ic_globe"
-                android:drawablePadding="10dp"
-                android:drawableTint="#60FFFFFF"
-                android:inputType="textUri"
-                />
-
 
         </LinearLayout>
     </ScrollView>

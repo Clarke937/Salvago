@@ -8,91 +8,97 @@
     android:fitsSystemWindows="true"
     tools:context=".Register">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:padding="16dp"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:text="Paso #2: Ubicacion Principal"
-            android:textAlignment="center"
-            android:textSize="18dp"
-            android:textColor="@color/white"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingBottom="8dp"
-            android:paddingTop="8dp"
-            android:background="@drawable/shape_step"
-            android:layout_width="wrap_content"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content" />
-        <ImageView
-            android:layout_marginTop="16dp"
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="16dp"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:src="@drawable/ic_pin_on_map"
-            android:tint="@color/white"
-            />
-        <RelativeLayout
-            android:layout_marginTop="24dp"
-            android:background="@drawable/shape_spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <Spinner
-                android:id="@+id/input_departament"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="Paso #2: Ubicacion Principal"
+                android:textAlignment="center"
+                android:textSize="18dp"
+                android:textColor="@color/white"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:background="@drawable/shape_step"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:src="@drawable/ic_pin_on_map"
+                android:tint="@color/white"
+                />
+            <RelativeLayout
+                android:layout_marginTop="24dp"
+                android:background="@drawable/shape_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Spinner
+                    android:id="@+id/input_departament"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    android:foregroundTint="@color/colorPrimaryDark"
+                    android:spinnerMode="dialog"
+                    />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_marginTop="12dp"
+                android:background="@drawable/shape_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Spinner
+                    android:id="@+id/input_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    android:foregroundTint="@color/colorPrimaryDark"
+                    android:spinnerMode="dialog"
+                    />
+            </RelativeLayout>
+
+            <EditText
+                android:layout_marginTop="24dp"
+                android:id="@+id/input_street"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
-                android:foregroundTint="@color/colorPrimaryDark"
-                android:spinnerMode="dialog"
+                android:hint="Calle o avenida"
+                android:textColorHint="#60FFFFFF"
+                android:textColor="@color/white"
+                android:drawableLeft="@drawable/ic_directions"
+                android:drawablePadding="10dp"
+                android:drawableTint="#60FFFFFF"
+                android:inputType="text"
                 />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_marginTop="12dp"
-            android:background="@drawable/shape_spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <Spinner
-                android:id="@+id/input_city"
+
+            <TextView
+                android:id="@+id/step_two_error"
+                android:layout_marginTop="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
-                android:foregroundTint="@color/colorPrimaryDark"
-                android:spinnerMode="dialog"
+                android:text="Todos los campos son obligatorios!"
+                android:textColor="@color/colorAccent"
+                android:drawableLeft="@drawable/ic_warning"
+                android:drawableTint="@color/colorAccent"
+                android:gravity="center_vertical"
+                android:drawablePadding="8dp"
+                android:visibility="invisible"
                 />
-        </RelativeLayout>
 
-        <EditText
-            android:layout_marginTop="24dp"
-            android:id="@+id/input_street"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
-            android:hint="Calle o avenida"
-            android:textColorHint="#60FFFFFF"
-            android:textColor="@color/white"
-            android:drawableLeft="@drawable/ic_directions"
-            android:drawablePadding="10dp"
-            android:drawableTint="#60FFFFFF"
-            android:inputType="text"
-            />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/step_two_error"
-            android:layout_marginTop="8dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Todos los campos son obligatorios!"
-            android:textColor="@color/colorAccent"
-            android:drawableLeft="@drawable/ic_warning"
-            android:drawableTint="@color/colorAccent"
-            android:gravity="center_vertical"
-            android:drawablePadding="8dp"
-            android:visibility="invisible"
-            />
-
-    </LinearLayout>
+    </ScrollView>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fabStep2"

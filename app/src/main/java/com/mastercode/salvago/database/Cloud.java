@@ -59,9 +59,15 @@ public class Cloud {
         return ref.child("companies").child(type).child(company).child("locations");
     }
 
+    public DatabaseReference getRatingOfCompany(String type, String company){
+        return ref.child("companies").child(type).child(company).child("rating");
+    }
+
     public DatabaseReference getSearch(){
         return ref.child("search");
     }
+
+
 
 
 }

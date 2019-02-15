@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:padding="16dp"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="¿Cual es tu opinion?"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        />
+
+    <com.willy.ratingbar.ScaleRatingBar
+        android:id="@+id/starbar"
+        android:layout_marginTop="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srb_numStars="5"
+        app:srb_minimumStars="1"
+        app:srb_rating="5"
+        app:srb_stepSize="1"
+        android:clickable="true"
+        android:gravity="center_horizontal"
+        app:srb_isIndicator="false"
+        app:srb_drawableEmpty="@drawable/ic_star_outline"
+        app:srb_drawableFilled="@drawable/ic_star"
+        />
+
+    <EditText
+        android:id="@+id/dialog_opinion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Escribela aqui..."
+        />
+
+
+
+</LinearLayout>

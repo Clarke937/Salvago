@@ -49,6 +49,10 @@
     <item android:title="Aplicacion">
         <menu>
             <item
+                android:id="@+id/nav_bug"
+                android:icon="@drawable/ic_bug"
+                android:title="Reportar un problema" />
+            <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
                 android:title="Compartir" />

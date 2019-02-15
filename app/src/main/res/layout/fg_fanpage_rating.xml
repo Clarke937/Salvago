@@ -12,89 +12,66 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <RelativeLayout
-            android:layout_marginTop="16dp"
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="150dp">
 
-            <at.grabner.circleprogress.CircleProgressView
-                android:id="@+id/ratingbar"
-                android:layout_width="150dp"
+            <ImageView
+                android:layout_weight="1"
+                android:id="@+id/wave_star"
+                android:layout_width="0dp"
                 android:layout_height="150dp"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="0dp"
-                app:cpv_autoTextColor="true"
-                app:cpv_autoTextSize="true"
-                app:cpv_barColor="@color/colorAccent"
-                app:cpv_barStartEndLine="None"
-                app:cpv_barStartEndLineColor="@color/transparent"
-                app:cpv_barStrokeCap="Round"
-                app:cpv_barWidth="20dp"
-                app:cpv_direction="CW"
-                app:cpv_innerContourColor="@color/transparent"
-                app:cpv_maxValue="10"
-                app:cpv_minValueAllowed="1"
-                app:cpv_outerContourColor="@color/transparent"
-                app:cpv_rimColor="@color/transparent"
-                app:cpv_startAngle="180"
-                app:cpv_text="Exelent"
-                app:cpv_textMode="Text"
-                app:cpv_value="5" />
+                android:src="@drawable/ic_rating"
+                android:tint="@color/colorAccent"
+                />
+            <RelativeLayout
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
 
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/rating_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="50dp"
+                    android:text="0/0"
+                    android:textAlignment="center"
+                    />
+                <TextView
+                    android:id="@+id/rating_text"
+                    android:layout_below="@id/rating_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lines="1"
+                    android:textSize="20dp"
+                    android:text="Excelente!"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorSecondaryText"
+                    />
 
-        <TextView
-            android:layout_marginTop="-50dp"
-            android:padding="8dp"
-            android:textAlignment="center"
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_opinion"
+            android:textColor="@color/white"
+            android:text="Dar mi Opinion"
+            android:backgroundTint="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Opinion de los usuarios"
-            android:textSize="24dp"
+            android:drawableLeft="@drawable/ic_like"
+            android:drawableRight="@drawable/ic_dislike"
+            android:drawableTint="@color/white"
             />
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:padding="8dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:layout_marginTop="4dp"
-                android:padding="8dp"
-                android:background="@drawable/search_shape"
-                android:hint="Que te parecio el lugar?"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <RatingBar
-                android:layout_marginTop="4dp"
-                android:numStars="5"
-                android:max="5"
-                android:rating="5"
-                android:stepSize="1"
-                style="?attr/ratingBarStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Button
-                android:layout_gravity="center_horizontal"
-                android:textColor="@color/white"
-                android:text="Publicar"
-                android:backgroundTint="@color/colorPrimary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
 
         <ListView
             android:id="@+id/list"
             android:nestedScrollingEnabled="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
-
-
     </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>

@@ -15,4 +15,11 @@
     <color name="AlmostTransparent">#30FFFFFF</color>
     <color name="transparent">#00FFFFFF</color>
 
+    <!--RATING COLORS-->
+    <color name="colorExcelent">#FF9800</color>
+    <color name="colorBueno">#4CAF50</color>
+    <color name="colorRegular">#448AFF</color>
+    <color name="colorMalo">#FF5722</color>
+    <color name="colorMuyMalo">#F44336</color>
+
 </resources>

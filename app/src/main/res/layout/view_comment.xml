@@ -13,9 +13,6 @@
         android:layout_height="24dp"
         android:src="@drawable/ic_bell_on"
         android:scaleType="fitCenter"
-        android:tint="@color/colorSecondaryText"
-        android:clickable="true"
-        android:foreground="?attr/selectableItemBackgroundBorderless"
         />
     <TextView
         android:id="@+id/header"
