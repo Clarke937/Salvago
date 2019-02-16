@@ -24,13 +24,14 @@ import com.mastercode.salvago.R;
 import com.mastercode.salvago.Register;
 import com.mastercode.salvago.database.Cloud;
 import com.mastercode.salvago.database.Localbase;
+import com.mastercode.salvago.tools.MySession;
 import com.mastercode.salvago.tools.Prefabs;
 
 import java.util.List;
 
 public class Fg_Rregister_Step1 extends Fragment implements ValueEventListener {
 
-    TextView tvName, tvDescript, tvError;
+    TextView tvName, tvDescript, tvError, tvPhone;
     FloatingActionButton fab;
     DatabaseReference ref;
     Spinner spinType;
@@ -47,6 +48,7 @@ public class Fg_Rregister_Step1 extends Fragment implements ValueEventListener {
         ref = new Cloud().getSearch();
 
         fab = v.findViewById(R.id.fabStep1);
+        tvPhone = v.findViewById(R.id.input_phone);
         tvError = v.findViewById(R.id.step_one_error);
         tvName = v.findViewById(R.id.input_name_company);
         spinType = v.findViewById(R.id.input_company_type);
@@ -84,11 +86,25 @@ public class Fg_Rregister_Step1 extends Fragment implements ValueEventListener {
             return;
         }
 
+        if(tvPhone.getText().toString().length() < 7){
+            showError("Numero de telefono invalido");
+            return;
+        }
+
         if(spinType.getSelectedItemPosition() == 0){
             showError("Seleccione una categoria");
             return;
         }
 
+        SaveData();
+    }
+
+    private void SaveData(){
+        MySession.newcompany.id = makeId(tvName.getText().toString());
+        MySession.newcompany.title = tvName.getText().toString();
+        MySession.newcompany.description = tvDescript.getText().toString();
+        MySession.newcompany.telephone = tvPhone.getText().toString();
+        MySession.newcompany.type = spinType.getSelectedItem().toString();
         Register.nextStep();
     }
 
@@ -97,10 +113,14 @@ public class Fg_Rregister_Step1 extends Fragment implements ValueEventListener {
         tvError.setText(a);
     }
 
+    private String makeId(String text){
+        return "@" + text.toLowerCase().replace(" ", "");
+    }
+
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-        String inputName = "@" + tvName.getText().toString().toLowerCase().replace(" ", "");
+        String inputName = makeId(tvName.getText().toString());
         Log.e("Register", inputName);
         boolean ok = true;
 

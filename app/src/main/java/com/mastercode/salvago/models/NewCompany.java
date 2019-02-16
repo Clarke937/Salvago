@@ -3,6 +3,7 @@ package com.mastercode.salvago.models;
 public final class NewCompany {
 
     //Step 1
+    public String id;
     public String title;
     public String description;
     public String telephone;

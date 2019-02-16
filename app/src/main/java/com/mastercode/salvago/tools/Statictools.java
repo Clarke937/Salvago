@@ -3,6 +3,9 @@ package com.mastercode.salvago.tools;
 import java.util.Calendar;
 import java.util.Date;
 
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+
 public class Statictools {
 
     public static String getSimpleDate(){
@@ -14,5 +17,15 @@ public class Statictools {
         return fecha;
     }
 
+    public static boolean isEmailValid(String mail){
+        boolean ok = true;
+        try {
+            InternetAddress ia = new InternetAddress(mail);
+            ia.validate();
+        }catch (AddressException e){
+            ok = false;
+        }
+        return ok;
+    }
 
 }

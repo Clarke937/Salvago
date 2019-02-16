@@ -19,7 +19,11 @@ import com.mastercode.salvago.customcontrol.Custom_Viewpager;
 import com.mastercode.salvago.fragments.Fg_Rregister_Step1;
 import com.mastercode.salvago.fragments.Fg_Rregister_Step2;
 import com.mastercode.salvago.fragments.Fg_Rregister_Step3;
+import com.mastercode.salvago.fragments.Fg_Rregister_Step4;
+import com.mastercode.salvago.fragments.Fg_Rregister_Step5;
+import com.mastercode.salvago.models.NewCompany;
 import com.mastercode.salvago.tools.AppNavigation;
+import com.mastercode.salvago.tools.MySession;
 
 public class Register extends AppCompatActivity{
 
@@ -42,6 +46,8 @@ public class Register extends AppCompatActivity{
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mViewPager.disableScroll(false);
         mViewPager.invalidate();
+
+        MySession.newcompany = new NewCompany();
     }
 
     @Override
@@ -71,12 +77,24 @@ public class Register extends AppCompatActivity{
             case 1:
                 mViewPager.setCurrentItem(2);
                 break;
+            case 2:
+                mViewPager.setCurrentItem(3);
+                break;
+            case 3:
+                mViewPager.setCurrentItem(4);
+                break;
         }
     }
 
     public void backStep(){
         int i = mViewPager.getCurrentItem();
         switch (i){
+            case 4:
+                mViewPager.setCurrentItem(3);
+                break;
+            case 3:
+                mViewPager.setCurrentItem(2);
+                break;
             case 2:
                 mViewPager.setCurrentItem(1);
                 break;
@@ -84,12 +102,11 @@ public class Register extends AppCompatActivity{
                 mViewPager.setCurrentItem(0);
                 break;
             case 0:
+                MySession.newcompany = null;
                 AppNavigation.goHome(this);
                 break;
         }
     }
-
-
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
@@ -112,13 +129,19 @@ public class Register extends AppCompatActivity{
                 case 2:
                     currentFg = new Fg_Rregister_Step3();
                     break;
+                case 3:
+                    currentFg = new Fg_Rregister_Step4();
+                    break;
+                case 4:
+                    currentFg = new Fg_Rregister_Step5();
+                    break;
             }
             return currentFg;
         }
 
         @Override
         public int getCount() {
-            return 3;
+            return 5;
         }
     }
 }

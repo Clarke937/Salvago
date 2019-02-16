@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    android:fitsSystemWindows="true"
+    android:fitsSystemWindows="false"
     tools:context=".Register">
 
-    <ScrollView
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -83,11 +83,25 @@
                 android:inputType="textPassword"
                 />
 
+            <TextView
+                android:id="@+id/step_four_error"
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Todos los campos son obligatorios!"
+                android:textColor="@color/colorAccent"
+                android:drawableLeft="@drawable/ic_warning"
+                android:drawableTint="@color/colorAccent"
+                android:gravity="center_vertical"
+                android:drawablePadding="8dp"
+                android:visibility="invisible"
+                />
+
         </LinearLayout>
-    </ScrollView>
+    </android.support.v4.widget.NestedScrollView>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fabStep2"
+        android:id="@+id/fabStep4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
