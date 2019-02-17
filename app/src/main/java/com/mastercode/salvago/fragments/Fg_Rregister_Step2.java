@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -29,7 +30,8 @@ import java.util.List;
 
 public class Fg_Rregister_Step2 extends Fragment {
 
-    TextView tvError, tvStreet;
+    TextView tvError;
+    EditText tvStreet;
     Spinner spinDepa, spinCity;
     FloatingActionButton fab;
     List<String> cities;

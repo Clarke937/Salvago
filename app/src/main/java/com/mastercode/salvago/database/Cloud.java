@@ -68,6 +68,12 @@ public class Cloud {
     }
 
 
+    public DatabaseReference getBugs(){
+        return ref.child("bugs");
+    };
 
+    public DatabaseReference getCompanies(){
+        return ref.child("companies");
+    };
 
 }

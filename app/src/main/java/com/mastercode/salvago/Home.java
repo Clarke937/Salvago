@@ -105,7 +105,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
         switch (id){
             case R.id.nav_promo:
-
+                ChangeFragment(0);
                 break;
             case R.id.nav_restaurant:
                 ChangeFragment(1);
@@ -127,6 +127,9 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
                 break;
             case R.id.nav_login:
                 AppNavigation.goAccess(this);
+                break;
+            case R.id.nav_bug:
+                AppNavigation.goBugReport(this);
                 break;
         }
 

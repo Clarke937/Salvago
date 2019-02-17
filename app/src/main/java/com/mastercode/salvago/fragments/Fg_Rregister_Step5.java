@@ -5,9 +5,12 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -17,9 +20,10 @@ import com.mastercode.salvago.tools.AppSecurity;
 import com.mastercode.salvago.tools.MySession;
 import com.mastercode.salvago.tools.Statictools;
 
-public class Fg_Rregister_Step5 extends Fragment implements View.OnClickListener{
+public class Fg_Rregister_Step5 extends Fragment implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
-    TextView tvError, tvCard, tvOwner, tvCVC, tvMes, tvYear;
+    TextView tvError;
+    EditText  tvCard, tvOwner, tvCVC, tvMes, tvYear;
     RadioButton rbPlan1, rbPlan2, rbPlan3;
     FloatingActionButton fab;
 
@@ -42,12 +46,39 @@ public class Fg_Rregister_Step5 extends Fragment implements View.OnClickListener
         rbPlan2 = v.findViewById(R.id.rbPlan2);
         rbPlan3 = v.findViewById(R.id.rbPlan3);
 
+        rbPlan1.setOnCheckedChangeListener(this);
+        rbPlan2.setOnCheckedChangeListener(this);
+        rbPlan3.setOnCheckedChangeListener(this);
+
+
         return v;
     }
 
     @Override
     public void onClick(View v) {
+        isOk();
+    }
 
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        String tag = buttonView.getTag().toString();
+
+        switch (tag){
+            case "plan1":
+                rbPlan2.setChecked(false);
+                rbPlan3.setChecked(false);
+                break;
+            case "plan2":
+                rbPlan1.setChecked(false);
+                rbPlan3.setChecked(false);
+                break;
+            case "plan3":
+                rbPlan1.setChecked(false);
+                rbPlan2.setChecked(false);
+                break;
+        }
+
+        buttonView.setChecked(isChecked);
     }
 
     public void isOk(){

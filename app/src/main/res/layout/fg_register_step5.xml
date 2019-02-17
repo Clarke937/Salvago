@@ -55,7 +55,7 @@
                 />
 
             <LinearLayout
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="12dp"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -88,6 +88,7 @@
                                 />
                             <RadioButton
                                 android:id="@+id/rbPlan1"
+                                android:tag="plan1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
@@ -126,6 +127,7 @@
                                 />
                             <RadioButton
                                 android:id="@+id/rbPlan2"
+                                android:tag="plan2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
@@ -162,6 +164,7 @@
                                 />
                             <RadioButton
                                 android:id="@+id/rbPlan3"
+                                android:tag="plan3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
@@ -261,7 +264,6 @@
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"/>
-
             </LinearLayout>
 
             <TextView

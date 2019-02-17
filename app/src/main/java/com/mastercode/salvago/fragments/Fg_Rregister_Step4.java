@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.mastercode.salvago.R;
@@ -18,7 +19,8 @@ import com.mastercode.salvago.tools.Statictools;
 
 public class Fg_Rregister_Step4 extends Fragment implements View.OnClickListener{
 
-    TextView tvError, tvCorreo, tvPsw, tvRepeat;
+    TextView tvError;
+    EditText tvCorreo, tvPsw, tvRepeat;
     FloatingActionButton fab;
 
     @Nullable

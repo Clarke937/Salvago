@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.mastercode.salvago.Access;
+import com.mastercode.salvago.BugReport;
 import com.mastercode.salvago.Dashboard;
 import com.mastercode.salvago.Fanpage;
 import com.mastercode.salvago.Giftcards;
@@ -44,6 +45,11 @@ public class AppNavigation {
 
     public static void goRegister(Context ctx){
         Intent i = new Intent(ctx, Register.class);
+        ctx.startActivity(i);
+    }
+
+    public static void goBugReport(Context ctx){
+        Intent i = new Intent(ctx, BugReport.class);
         ctx.startActivity(i);
     }
 

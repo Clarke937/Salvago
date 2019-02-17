@@ -1,5 +1,6 @@
 package com.mastercode.salvago.adapters;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -13,7 +14,7 @@ import com.mastercode.salvago.R;
 
 import java.util.List;
 
-public class Fanpage_Pics extends BaseAdapter {
+public class Fanpage_Pics extends BaseAdapter implements View.OnClickListener {
 
     private Context ctx;
     private List<Uri> pics;
@@ -46,6 +47,22 @@ public class Fanpage_Pics extends BaseAdapter {
         }
         ImageView img = convertView.findViewById(R.id.companyimage);
         Glide.with(ctx).load(url).into(img);
+
+        convertView.setOnClickListener(this);
+        convertView.setTag(url);
+
         return convertView;
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        Uri uri = (Uri) v.getTag();
+        AlertDialog.Builder build = new AlertDialog.Builder(ctx);
+        View vi = LayoutInflater.from(ctx).inflate(R.layout.view_picdialog,null,false);
+        ImageView img = vi.findViewById(R.id.picture);
+        Glide.with(ctx).load(uri).into(img);
+        build.setView(vi);
+        build.create().show();
     }
 }

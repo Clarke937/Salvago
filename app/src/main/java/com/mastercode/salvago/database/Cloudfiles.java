@@ -28,4 +28,8 @@ public class Cloudfiles {
         return ref.child("companies").child(companyid);
     }
 
+    public StorageReference getCompanyPromos(String companyid, String url){
+        return ref.child("companies").child(companyid).child(url);
+    }
+
 }

@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,13 +26,13 @@ import com.mastercode.salvago.Register;
 import com.mastercode.salvago.database.Cloud;
 import com.mastercode.salvago.database.Localbase;
 import com.mastercode.salvago.tools.MySession;
-import com.mastercode.salvago.tools.Prefabs;
 
 import java.util.List;
 
 public class Fg_Rregister_Step1 extends Fragment implements ValueEventListener {
 
-    TextView tvName, tvDescript, tvError, tvPhone;
+    EditText tvName, tvPhone;
+    TextView tvDescript,tvError;
     FloatingActionButton fab;
     DatabaseReference ref;
     Spinner spinType;

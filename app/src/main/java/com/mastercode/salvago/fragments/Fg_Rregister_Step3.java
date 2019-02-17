@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -25,7 +26,7 @@ import java.util.List;
 
 public class Fg_Rregister_Step3 extends Fragment implements View.OnClickListener {
 
-    TextView tvFb, tvTw, tvIns, tvWeb;
+    EditText tvFb, tvTw, tvIns, tvWeb;
     FloatingActionButton fab;
 
     @Nullable

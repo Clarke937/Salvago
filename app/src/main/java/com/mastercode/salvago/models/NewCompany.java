@@ -1,6 +1,6 @@
 package com.mastercode.salvago.models;
 
-public final class NewCompany {
+public class NewCompany {
 
     //Step 1
     public String id;

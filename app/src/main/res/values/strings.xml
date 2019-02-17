@@ -4,6 +4,10 @@
     <string name="precio3">$39.90</string>
     <string name="precio12">$149.90</string>
 
+    <string name="sorryForBug">
+        SalvaGo es un proyecto aun en desarrollo y agradecemos tu comprension si surge algun imprevisto, para ayudarnos a mejor la aplicacion y ofrecerte una mejor experiencia de uso describenos tu problema con mucho detalle. Muchas Gracias
+    </string>
+
 
     <!---SYSTEM STRINGS-->
     <string name="app_name">Salvago</string>
@@ -20,4 +24,5 @@
     <string name="title_activity_dashboard">Dashboard</string>
     <string name="title_activity_register">Register</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_bug_report">BugReport</string>
 </resources>

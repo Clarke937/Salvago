@@ -1,16 +1,38 @@
 package com.mastercode.salvago.fragments;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.StorageReference;
 import com.mastercode.salvago.R;
+import com.mastercode.salvago.adapters.Adapter_Promos;
+import com.mastercode.salvago.database.Cloud;
+import com.mastercode.salvago.database.Cloudfiles;
+import com.mastercode.salvago.models.Promo;
 
-public class Fg_Nav_Promos extends Fragment {
+import java.util.ArrayList;
+import java.util.List;
+
+public class Fg_Nav_Promos extends Fragment implements ValueEventListener {
+
+    RecyclerView rcv;
+    List<Promo> promos;
+    DatabaseReference ref;
+    Adapter_Promos adapter;
 
     @Nullable
     @Override
@@ -20,7 +42,56 @@ public class Fg_Nav_Promos extends Fragment {
     }
 
     public View init(View v){
+
+        promos = new ArrayList<>();
+        adapter = new Adapter_Promos(promos, getContext());
+
+        rcv = v.findViewById(R.id.rcv);
+        rcv.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        rcv.setHasFixedSize(true);
+        rcv.setAdapter(adapter);
+
+        ref = new Cloud().getCompanies();
+        ref.addListenerForSingleValueEvent(this);
         return v;
     }
 
+    @Override
+    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+        for(DataSnapshot data : dataSnapshot.getChildren()){
+            for(DataSnapshot da : data.getChildren()){
+                if(da.child("promos").exists()){
+                    for (DataSnapshot d : da.child("promos").getChildren()){
+                        final Promo pro = new Promo();
+                        pro.id = d.getKey();
+                        pro.description = d.child("description").getValue().toString();
+                        pro.title = d.child("title").getValue().toString();
+                        pro.price_promo = Double.parseDouble(d.child("promoprice").getValue().toString());
+                        pro.company = da.child("info").child("title").getValue().toString();
+
+                        String url = d.child("imagen").getValue().toString();
+                        StorageReference storage = new Cloudfiles().getCompanyPromos(da.getKey(), url);
+
+                        storage.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                pro.pic = uri;
+                                adapter.notifyDataSetChanged();
+                            }
+                        });
+
+                        Log.e("Promo", d.getKey());
+                        promos.add(pro);
+                    }
+                }
+            }
+        }
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+    }
 }
