@@ -1,5 +1,16 @@
 package com.mastercode.salvago.tools;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.github.javiersantos.materialstyleddialogs.MaterialStyledDialog;
+
 import java.util.Calendar;
 import java.util.Date;
 
@@ -14,6 +25,7 @@ public class Statictools {
         fecha += cal.get(Calendar.DAY_OF_MONTH) + "-";
         fecha += (cal.get(Calendar.MONTH) + 1) + "-";
         fecha += cal.get(Calendar.YEAR);
+        Log.e("Tiempo", cal.getTimeInMillis() + "");
         return fecha;
     }
 
@@ -26,6 +38,84 @@ public class Statictools {
             ok = false;
         }
         return ok;
+    }
+
+    public static boolean TestConexion(final Context ctx){
+        ConnectivityManager man = (ConnectivityManager) ctx.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo net = man.getActiveNetworkInfo();
+
+        boolean conexion = false;
+
+        if((net != null) && (net.isConnected())){
+            conexion = true;
+        }else{
+            MaterialStyledDialog.Builder diag = new Prefabs().ShowInternetAlert(ctx);
+            diag.onPositive(new MaterialDialog.SingleButtonCallback() {
+                @Override
+                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                    AppCompatActivity a = (AppCompatActivity) ctx;
+                    dialog.dismiss();
+                    a.finish();
+                    ctx.startActivity(a.getIntent());
+                }
+            });
+            diag.build().show();
+        }
+        return conexion;
+    }
+
+
+    public static String MilisToSimpleDate(long milis){
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(milis);
+        String builder = "";
+        builder += cal.get(Calendar.DAY_OF_MONTH) + "-";
+        builder += (cal.get(Calendar.MONTH) + 1) + "-";
+        builder += cal.get(Calendar.YEAR);
+        return builder;
+    }
+
+
+    public static boolean isToday(long milis){
+        String today = getSimpleDate();
+        String date = MilisToSimpleDate(milis);
+        return (today.equals(date)) ? true : false;
+    }
+
+    public static boolean isTomorrow(long milis){
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DAY_OF_YEAR, 1);
+        String tomorrow = MilisToSimpleDate(cal.getTimeInMillis());
+        String date = MilisToSimpleDate(milis);
+        return (tomorrow.equals(date)) ? true : false;
+    }
+
+    public static boolean DateExpired(long milis){
+
+        Calendar calHoy = Calendar.getInstance();
+        Calendar calAny = Calendar.getInstance();
+        calAny.setTimeInMillis(milis);
+
+        int DayHoy = calHoy.get(Calendar.DAY_OF_MONTH);
+        int MesHoy = calHoy.get(Calendar.MONTH);
+        int YearHoy = calHoy.get(Calendar.YEAR);
+
+        int DayAny = calAny.get(Calendar.YEAR);
+        int MesAny = calAny.get(Calendar.MONTH);
+        int YearAny = calAny.get(Calendar.DAY_OF_MONTH);
+
+        if(YearAny > DayHoy){
+            return true;
+        }else if(YearAny == YearHoy){
+            if(MesAny > MesHoy){
+                return true;
+            }else if (MesAny == MesHoy){
+                if(DayAny > DayHoy){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
 }

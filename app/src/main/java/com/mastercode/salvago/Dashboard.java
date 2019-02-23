@@ -1,18 +1,20 @@
 package com.mastercode.salvago;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
+import android.widget.GridView;
+
+import com.mastercode.salvago.adapters.Adapter_Dashboard_Menu;
+import com.mastercode.salvago.models.Menuoption;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Dashboard extends AppCompatActivity {
 
-    FloatingActionButton fab;
+    GridView list;
+    Adapter_Dashboard_Menu adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,21 +23,25 @@ public class Dashboard extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         init();
     }
 
     public void init(){
+        List<Menuoption> menu = new ArrayList<>();
+
+        menu.add(new Menuoption(R.drawable.ic_edit,"Informacion General"));
+        menu.add(new Menuoption(R.drawable.ic_catalog,"Menu de Precios"));
+        menu.add(new Menuoption(R.drawable.ic_star,"Promociones"));
+        menu.add(new Menuoption(R.drawable.ic_camera,"Fotografias"));
+        menu.add(new Menuoption(R.drawable.ic_map_pin,"Ubicaciones"));
+        menu.add(new Menuoption(R.drawable.ic_quote,"Calificacion y Comentarios"));
+        menu.add(new Menuoption(R.drawable.ic_eye,"Contador de visitas"));
+        menu.add(new Menuoption(R.drawable.ic_payments,"Suscripcion Mensual"));
 
 
+        adapter = new Adapter_Dashboard_Menu(menu, this);
+        list = findViewById(R.id.dashmenu);
+        list.setAdapter(adapter);
     }
 
 

@@ -16,7 +16,7 @@
             android:id="@+id/promocompany"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorBueno"
+            android:background="@color/colorAccent"
             android:padding="8dp"
             android:text="Id Company"
             android:textColor="@color/white" />
@@ -67,9 +67,10 @@
 
                 <TextView
                     android:id="@+id/promoPrice"
+                    android:layout_marginTop="4dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Fecha Exp: 7-8-2019"
+                    android:text="Expiracion: 7-8-2019"
                     android:textColor="@color/colorSecondaryText"
                     android:drawableLeft="@drawable/ic_clock"
                     android:drawablePadding="8dp"

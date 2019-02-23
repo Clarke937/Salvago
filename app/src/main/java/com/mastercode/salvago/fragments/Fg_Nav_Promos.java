@@ -23,8 +23,11 @@ import com.mastercode.salvago.adapters.Adapter_Promos;
 import com.mastercode.salvago.database.Cloud;
 import com.mastercode.salvago.database.Cloudfiles;
 import com.mastercode.salvago.models.Promo;
+import com.mastercode.salvago.tools.Statictools;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class Fg_Nav_Promos extends Fragment implements ValueEventListener {
@@ -38,10 +41,17 @@ public class Fg_Nav_Promos extends Fragment implements ValueEventListener {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fg_recyclerview,container,false);
+        getActivity().setTitle("Promociones");
         return init(v);
     }
 
     public View init(View v){
+
+        Calendar now = Calendar.getInstance();
+        now.set(Calendar.DAY_OF_MONTH, 18);
+        now.set(Calendar.MONTH, 1);
+        now.set(Calendar.YEAR, 2019);
+        Log.e("Tomorrow", now.getTimeInMillis()+ "");
 
         promos = new ArrayList<>();
         adapter = new Adapter_Promos(promos, getContext());
@@ -63,26 +73,31 @@ public class Fg_Nav_Promos extends Fragment implements ValueEventListener {
             for(DataSnapshot da : data.getChildren()){
                 if(da.child("promos").exists()){
                     for (DataSnapshot d : da.child("promos").getChildren()){
-                        final Promo pro = new Promo();
-                        pro.id = d.getKey();
-                        pro.description = d.child("description").getValue().toString();
-                        pro.title = d.child("title").getValue().toString();
-                        pro.price_promo = Double.parseDouble(d.child("promoprice").getValue().toString());
-                        pro.company = da.child("info").child("title").getValue().toString();
 
-                        String url = d.child("imagen").getValue().toString();
-                        StorageReference storage = new Cloudfiles().getCompanyPromos(da.getKey(), url);
+                        long expira = Long.parseLong(d.child("findate").getValue().toString());
 
-                        storage.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri) {
-                                pro.pic = uri;
-                                adapter.notifyDataSetChanged();
-                            }
-                        });
+                        if(Statictools.DateExpired(expira)){
+                            final Promo pro = new Promo();
+                            pro.id = d.getKey();
+                            pro.description = d.child("description").getValue().toString();
+                            pro.title = d.child("title").getValue().toString();
+                            pro.price_promo = Double.parseDouble(d.child("promoprice").getValue().toString());
+                            pro.company = da.child("info").child("title").getValue().toString();
+                            pro.date_fin = expira;
 
-                        Log.e("Promo", d.getKey());
-                        promos.add(pro);
+                            String url = d.child("imagen").getValue().toString();
+                            StorageReference storage = new Cloudfiles().getCompanyPromos(da.getKey(), url);
+
+                            storage.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    pro.pic = uri;
+                                    adapter.notifyDataSetChanged();
+                                }
+                            });
+                            promos.add(pro);
+                        }
+
                     }
                 }
             }

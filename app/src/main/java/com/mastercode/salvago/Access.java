@@ -56,11 +56,11 @@ public class Access extends AppCompatActivity implements View.OnClickListener{
     @Override
     public void onClick(View v) {
 
-        String mail = "correo" + etCompany.getText().toString() + ".com";
+        /*String mail = "correo" + etCompany.getText().toString() + ".com";
         String pass = etPass.getText().toString();
-        Log.e("AUTHERROR",pass);
+        Log.e("AUTHERROR",pass);*/
 
-        auth.signInWithEmailAndPassword(mail,pass).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+        /*auth.signInWithEmailAndPassword(mail,pass).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
@@ -76,14 +76,15 @@ public class Access extends AppCompatActivity implements View.OnClickListener{
                 Log.e("AUTHERROR",e.getMessage());
                 Log.e("AUTHERROR",e.toString());
             }
-        });
+        });*/
     }
 
 
     public void goDashboard(){
-        if(MySession.fbuser != null){
-            AppNavigation.goDashboard(this);
-        }
+        AppNavigation.goDashboard(this);
+        /*if(MySession.fbuser != null){
+
+        }*/
     }
 
 
