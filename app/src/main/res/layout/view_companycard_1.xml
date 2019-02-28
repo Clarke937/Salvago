@@ -61,10 +61,10 @@
                 android:id="@+id/phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Santa Tecla"
+                android:text="0 mts"
                 android:drawablePadding="8dp"
                 android:gravity="center_vertical"
-                android:drawableLeft="@drawable/ic_phone"
+                android:drawableLeft="@drawable/ic_map_pin"
                 android:drawableTint="@color/colorSecondaryText"
                 android:textColor="@color/colorSecondaryText"
                 />

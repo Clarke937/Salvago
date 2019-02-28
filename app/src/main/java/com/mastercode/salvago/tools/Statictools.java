@@ -1,6 +1,8 @@
 package com.mastercode.salvago.tools;
 
 import android.content.Context;
+import android.location.Location;
+import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.annotation.NonNull;
@@ -10,6 +12,7 @@ import android.util.Log;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.github.javiersantos.materialstyleddialogs.MaterialStyledDialog;
+import com.google.android.gms.maps.model.LatLng;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -117,5 +120,9 @@ public class Statictools {
         }
         return false;
     }
+
+
+
+
 
 }

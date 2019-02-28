@@ -21,6 +21,8 @@ public class Company {
     public List<Integer> telephones;
     public List<LatLng> coordinates;
     public String telephone;
+    public boolean premium;
+    public double proximity;
 
     public Company(){
 
