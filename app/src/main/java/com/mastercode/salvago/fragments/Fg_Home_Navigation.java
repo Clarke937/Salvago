@@ -40,6 +40,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -115,6 +117,7 @@ public class Fg_Home_Navigation extends Fragment implements ValueEventListener {
     public void getData(){
         companies.clear();
         ref.addListenerForSingleValueEvent(this);
+
     }
 
     @Override
@@ -145,21 +148,16 @@ public class Fg_Home_Navigation extends Fragment implements ValueEventListener {
             double distance = 999999999;
             for (LatLng co: coors){
                 double temp = SphericalUtil.computeDistanceBetween(co, location);
+                Log.e("Navi","Distancia: " + temp);
                 if(temp < distance) distance = temp;
             }
 
             com.telephone = Math.round(distance) + " mts";
-            storage.child(d.getKey() + ".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                @Override
-                public void onSuccess(Uri uri) {
-                    com.banner = uri;
-                    adapter.notifyDataSetChanged();
-                }
-            });
-
+            com.proximity = Math.round(distance);
             companies.add(com);
         }
-        adapter.notifyDataSetChanged();
+
+        SortCompanies();
     }
 
     @Override
@@ -168,10 +166,55 @@ public class Fg_Home_Navigation extends Fragment implements ValueEventListener {
     }
 
 
+
+
+
+
+
+
+
+
     public void SortCompanies(){
 
+        List<Company> premiums = new ArrayList<>();
+        List<Company> normals = new ArrayList<>();
+        for (Company co : companies){
+            if(co.premium){
+                premiums.add(co);
+            }else{
+                normals.add(co);
+            }
+        }
 
+        premiums = SortByProximity(premiums);
+        normals = SortByProximity(normals);
 
-
+        companies.clear();
+        companies.addAll(premiums);
+        companies.addAll(normals);
+        DownloadPics();
     }
+
+    public void DownloadPics(){
+
+        for(final Company c : companies){
+            storage.child(c.id + ".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    c.banner = uri;
+                    adapter.notifyDataSetChanged();
+                }
+            });
+        }
+    }
+
+
+    private List<Company> SortByProximity(List<Company> list){
+        Collections.sort(list);
+        for(Company c : list){
+            Log.e("Sort",c.id + " Proximity :" + c.proximity);
+        }
+        return list;
+    }
+
 }

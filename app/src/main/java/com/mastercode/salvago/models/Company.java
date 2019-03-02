@@ -2,9 +2,11 @@ package com.mastercode.salvago.models;
 import android.net.Uri;
 
 import com.google.android.gms.maps.model.LatLng;
+
+import java.util.Comparator;
 import java.util.List;
 
-public class Company {
+public class Company implements Comparable<Company>{
 
     public int city;
     public String id;
@@ -31,5 +33,10 @@ public class Company {
     public Company(String companyname, int city) {
         this.companyname = companyname;
         this.city = city;
+    }
+
+    @Override
+    public int compareTo(Company o) {
+        return this.proximity > o.proximity ? 1 : this.proximity < o.proximity ? -1 : 0;
     }
 }

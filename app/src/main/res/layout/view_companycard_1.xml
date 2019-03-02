@@ -47,6 +47,10 @@
                     android:textSize="20dp"
                     android:lines="1"
                     android:ellipsize="end"
+                    android:drawableLeft="@drawable/ic_star"
+                    android:drawableTint="@color/white"
+                    android:drawablePadding="8dp"
+                    android:gravity="center_vertical"
                     />
 
             </RelativeLayout>

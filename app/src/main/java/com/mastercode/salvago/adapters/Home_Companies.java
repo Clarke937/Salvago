@@ -12,7 +12,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.mastercode.salvago.R;
-import com.mastercode.salvago.database.Localbase;
 import com.mastercode.salvago.models.Company;
 import com.mastercode.salvago.tools.AppNavigation;
 
@@ -41,6 +40,9 @@ public class Home_Companies extends RecyclerView.Adapter<Home_Companies.VwHolder
     public void onBindViewHolder(@NonNull VwHolder vwHolder, int i) {
         final Company com = companies.get(i);
         vwHolder.tvName.setText(com.companyname);
+
+        if(!com.premium) vwHolder.tvName.setCompoundDrawables(null, null, null, null);
+
         vwHolder.tvDescript.setText(com.descripcion);
 
         if(com.telephone != null){
