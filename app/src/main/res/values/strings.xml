@@ -25,4 +25,5 @@
     <string name="title_activity_register">Register</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_activity_bug_report">BugReport</string>
+    <string name="title_activity_dashcontent">Dashcontent</string>
 </resources>

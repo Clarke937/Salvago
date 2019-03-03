@@ -49,13 +49,12 @@ public class Access extends AppCompatActivity implements View.OnClickListener{
         auth = FirebaseAuth.getInstance(app);
         MySession.fbuser = auth.getCurrentUser();
         fab.setOnClickListener(this);
-        goDashboard();
     }
 
     /*defaultpass*/
     @Override
     public void onClick(View v) {
-
+        goDashboard();
         /*String mail = "correo" + etCompany.getText().toString() + ".com";
         String pass = etPass.getText().toString();
         Log.e("AUTHERROR",pass);*/

@@ -2,7 +2,7 @@
 <android.support.v7.widget.CardView
     android:clickable="true"
     android:foreground="?attr/selectableItemBackground"
-    app:cardCornerRadius="8dp"
+    app:cardCornerRadius="4dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="175dp"
@@ -18,14 +18,14 @@
             android:id="@+id/dashbackground"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#000"
+            android:background="@drawable/shape_dashmenu"
             />
         <ImageView
             android:id="@+id/dashmenuicon"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:src="@drawable/ic_refresh"
-            android:tint="@color/white"
+            android:tint="@color/dashboardhead"
             android:scaleType="fitXY"
             android:layout_centerInParent="true"
             />
@@ -35,10 +35,11 @@
             android:layout_height="wrap_content"
             android:text="Menu Item"
             android:layout_margin="16dp"
-            android:textColor="@color/white"
+            android:textColor="@color/dashboardhead"
             android:layout_alignParentBottom="true"
             android:lines="1"
             android:ellipsize="end"
+            android:textAlignment="center"
             />
     </RelativeLayout>
 </android.support.v7.widget.CardView>

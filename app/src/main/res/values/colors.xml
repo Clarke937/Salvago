@@ -14,6 +14,7 @@
     <color name="Almostwhite">#80FFFFFF</color>
     <color name="AlmostTransparent">#30FFFFFF</color>
     <color name="transparent">#00FFFFFF</color>
+    <color name="dashboardhead">#2D3E50</color>
 
     <!--RATING COLORS-->
     <color name="colorExcelent">#FF9800</color>

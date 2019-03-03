@@ -76,4 +76,7 @@ public class Cloud {
         return ref.child("companies");
     };
 
+    public DatabaseReference getTags(String id){
+        return ref.child("search").child(id).child("tags");
+    }
 }

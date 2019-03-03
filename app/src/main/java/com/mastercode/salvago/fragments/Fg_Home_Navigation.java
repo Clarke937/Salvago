@@ -1,10 +1,8 @@
 package com.mastercode.salvago.fragments;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.location.LocationManager;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,7 +13,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -32,19 +29,9 @@ import com.mastercode.salvago.database.Cloud;
 import com.mastercode.salvago.database.Cloudfiles;
 import com.mastercode.salvago.models.Company;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-
-import javax.net.ssl.HttpsURLConnection;
 
 public class Fg_Home_Navigation extends Fragment implements ValueEventListener {
 
@@ -165,19 +152,11 @@ public class Fg_Home_Navigation extends Fragment implements ValueEventListener {
 
     }
 
-
-
-
-
-
-
-
-
-
     public void SortCompanies(){
 
         List<Company> premiums = new ArrayList<>();
         List<Company> normals = new ArrayList<>();
+
         for (Company co : companies){
             if(co.premium){
                 premiums.add(co);
@@ -186,8 +165,8 @@ public class Fg_Home_Navigation extends Fragment implements ValueEventListener {
             }
         }
 
-        premiums = SortByProximity(premiums);
-        normals = SortByProximity(normals);
+        Collections.sort(premiums);
+        Collections.sort(normals);
 
         companies.clear();
         companies.addAll(premiums);
@@ -196,7 +175,6 @@ public class Fg_Home_Navigation extends Fragment implements ValueEventListener {
     }
 
     public void DownloadPics(){
-
         for(final Company c : companies){
             storage.child(c.id + ".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
@@ -209,12 +187,5 @@ public class Fg_Home_Navigation extends Fragment implements ValueEventListener {
     }
 
 
-    private List<Company> SortByProximity(List<Company> list){
-        Collections.sort(list);
-        for(Company c : list){
-            Log.e("Sort",c.id + " Proximity :" + c.proximity);
-        }
-        return list;
-    }
 
 }

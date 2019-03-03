@@ -1,17 +1,23 @@
 package com.mastercode.salvago.adapters;
+import android.app.Activity;
 import android.content.Context;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.mastercode.salvago.Dashboard;
 import com.mastercode.salvago.R;
 import com.mastercode.salvago.models.Menuoption;
+import com.mastercode.salvago.tools.AppNavigation;
 import com.mastercode.salvago.tools.Prefabs;
 import java.util.List;
 
-public class Adapter_Dashboard_Menu extends BaseAdapter {
+public class Adapter_Dashboard_Menu extends BaseAdapter implements View.OnClickListener {
 
     List<Menuoption> opciones;
     Context ctx;
@@ -52,9 +58,16 @@ public class Adapter_Dashboard_Menu extends BaseAdapter {
         TextView option = convertView.findViewById(R.id.dashmenuop);
         option.setText(text);
 
-        View backg = convertView.findViewById(R.id.dashbackground);
-        backg.setBackgroundColor(new Prefabs().DashboardColors().get(position));
+        convertView.setTag(position);
+        convertView.setOnClickListener(this);
+
 
         return convertView;
+    }
+
+    @Override
+    public void onClick(View v) {
+        int position = (int) v.getTag();
+        AppNavigation.goDashcontent(ctx, position);
     }
 }

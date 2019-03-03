@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:drawableTop="@drawable/png_lamp"
+        android:drawablePadding="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Agrega etiquetas relacionadas con los servicios que ofrece tu negocio para que sea mas facil para los usuarios encontrarte"
+        android:textAlignment="center"
+        />
+    <EditText
+        android:id="@+id/tagbox"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/search_shape"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:hint="Hamburguesas, Habitacion, Playa..."
+        />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/addbutton"
+            android:layout_marginTop="8dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorAccent"
+            android:text="Agregar"
+            android:textColor="@color/white"
+            android:drawableLeft="@drawable/ic_hastag"
+            android:drawableTint="@color/white"
+            android:drawablePadding="8dp"
+            android:tag="add"
+            />
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/savebutton"
+            android:layout_marginTop="8dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorBueno"
+            android:text="Guardar"
+            android:textColor="@color/white"
+            android:drawableLeft="@drawable/ic_save"
+            android:drawableTint="@color/white"
+            android:drawablePadding="8dp"
+            android:tag="save"
+            />
+
+    </LinearLayout>
+
+
+
+
+    <com.plumillonforge.android.chipview.ChipView
+        android:id="@+id/chipview"
+        android:layout_marginTop="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:chip_corner_radius="8dp"
+        app:chip_padding="8dp"
+        app:chip_spacing="8dp"
+        />
+
+
+
+</LinearLayout>

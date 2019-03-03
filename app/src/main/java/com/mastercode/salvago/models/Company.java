@@ -14,8 +14,6 @@ public class Company implements Comparable<Company>{
     public String twitter;
     public String website;
     public int departament;
-    public double maxPrice;
-    public double minPrice;
     public String facebook;
     public String instagram;
     public String companyname;

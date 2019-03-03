@@ -6,6 +6,7 @@ import android.content.Intent;
 import com.mastercode.salvago.Access;
 import com.mastercode.salvago.BugReport;
 import com.mastercode.salvago.Dashboard;
+import com.mastercode.salvago.Dashcontent;
 import com.mastercode.salvago.Fanpage;
 import com.mastercode.salvago.Giftcards;
 import com.mastercode.salvago.Home;
@@ -50,6 +51,12 @@ public class AppNavigation {
 
     public static void goBugReport(Context ctx){
         Intent i = new Intent(ctx, BugReport.class);
+        ctx.startActivity(i);
+    }
+
+    public static void goDashcontent(Context ctx, int index){
+        Intent i = new Intent(ctx, Dashcontent.class);
+        i.putExtra("view", index);
         ctx.startActivity(i);
     }
 

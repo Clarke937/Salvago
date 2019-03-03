@@ -1,41 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:context=".Dashboard">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:elevation="0dp"
+        >
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="@color/dashboardhead"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
 
-
-
-    <GridView
-        android:layout_margin="8dp"
-        android:scrollbars="none"
-        android:numColumns="2"
-        android:id="@+id/dashmenu"
-        android:horizontalSpacing="8dp"
-        android:verticalSpacing="8dp"
-        android:scrollbarStyle="outsideOverlay"
+    <RelativeLayout
+        android:id="@+id/dashead"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:padding="16dp"
+        android:background="@color/dashboardhead"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/dash_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2 / Marzo / 2019"
+            android:textColor="@color/colorLightPrimary"
+            android:textAlignment="center"
+            android:drawableTop="@drawable/ic_store"
+            android:drawableTint="@color/colorLightPrimary"
+            />
+
+        <TextView
+            android:id="@+id/dash_companyname"
+            android:lines="1"
+            android:text="Test Company Inc"
+            android:textColor="@color/white"
+            android:textSize="24dp"
+            android:ellipsize="end"
+            android:layout_below="@id/dash_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            />
 
 
+        <LinearLayout
+            android:layout_below="@id/dash_companyname"
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </LinearLayout>
 
-</android.support.design.widget.CoordinatorLayout>
+    </RelativeLayout>
+
+
+    <FrameLayout
+        android:id="@+id/dashcontent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <GridView
+            android:id="@+id/dashmenu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:numColumns="2"
+            android:nestedScrollingEnabled="true"
+            android:horizontalSpacing="4dp"
+            android:verticalSpacing="4dp"
+            android:padding="4dp"
+            android:scrollbarStyle="outsideOverlay"
+            />
+    </FrameLayout>
+</LinearLayout>
