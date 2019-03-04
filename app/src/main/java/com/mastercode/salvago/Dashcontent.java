@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.mastercode.salvago.fragments.Fg_Dashboard_Catalog;
 import com.mastercode.salvago.fragments.Fg_Dashboard_Information;
 import com.mastercode.salvago.fragments.Fg_Dashboard_Tags;
 
@@ -36,6 +37,12 @@ public class Dashcontent extends AppCompatActivity {
                 break;
             case 3:
                 fg = new Fg_Dashboard_Tags();
+                break;
+            case 4:
+                fg = new Fg_Dashboard_Catalog();
+                break;
+            default:
+                fg = new Fragment();
                 break;
         }
 

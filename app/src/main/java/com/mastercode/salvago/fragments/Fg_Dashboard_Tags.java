@@ -3,8 +3,10 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.renderscript.Sampler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +14,11 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import com.mastercode.salvago.R;
 import com.mastercode.salvago.database.Cloud;
 import com.mastercode.salvago.models.Chiptag;
@@ -22,13 +28,14 @@ import com.plumillonforge.android.chipview.OnChipClickListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Fg_Dashboard_Tags extends Fragment implements View.OnClickListener, OnChipClickListener {
+public class Fg_Dashboard_Tags extends Fragment implements View.OnClickListener, OnChipClickListener, ValueEventListener {
 
     ChipView chipsview;
     List<Chip> tags;
     EditText tagbox;
     Button add,save;
     DatabaseReference ref;
+    String companyid;
 
     @Nullable
     @Override
@@ -37,7 +44,7 @@ public class Fg_Dashboard_Tags extends Fragment implements View.OnClickListener,
         return init(v);
     }
 
-    View init(View v){
+    private View init(View v){
         tags = new ArrayList<>();
         ref = new Cloud().getTags("@testcompany1");
 
@@ -48,13 +55,13 @@ public class Fg_Dashboard_Tags extends Fragment implements View.OnClickListener,
 
         chipsview.setChipList(tags);
         chipsview.setOnChipClickListener(this);
+        ref.addListenerForSingleValueEvent(this);
         add.setOnClickListener(this);
         save.setOnClickListener(this);
         return v;
     }
 
     private void addNewTags(){
-
         String builder[] = tagbox.getText().toString().trim().split(",");
         for(String tag : builder){
             if(!chipsview.getAdapter().getChipList().contains(new Chiptag(tag.trim()))){
@@ -67,7 +74,6 @@ public class Fg_Dashboard_Tags extends Fragment implements View.OnClickListener,
         imm.hideSoftInputFromWindow(tagbox.getWindowToken(), 0);
     }
 
-
     @Override
     public void onClick(View v) {
         switch (v.getTag().toString()){
@@ -75,10 +81,11 @@ public class Fg_Dashboard_Tags extends Fragment implements View.OnClickListener,
                 addNewTags();
                 break;
             case "save":
-                for (Chip tag : tags){
-                    ref.push().setValue(tag.getText());
+                for(int i = 0; i < chipsview.getAdapter().count(); i++){
+                    Chip tag = chipsview.getAdapter().getChip(i);
+                    ref.child("" + i).setValue(tag.getText());
                 }
-                chipsview.setChipBackgroundColor(getResources().getColor(R.color.colorBueno));
+                Snackbar.make(v,"Etiquetas guardadas", Snackbar.LENGTH_SHORT).show();
                 break;
         }
     }
@@ -96,5 +103,18 @@ public class Fg_Dashboard_Tags extends Fragment implements View.OnClickListener,
         });
         dialog.setNegativeButton("Cancelar", null);
         dialog.create().show();
+    }
+
+    @Override
+    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+        for(DataSnapshot d : dataSnapshot.getChildren()){
+            String tag = d.getValue().toString();
+            chipsview.getAdapter().add(new Chiptag(tag));
+        }
+    }
+
+    @Override
+    public void onCancelled(@NonNull DatabaseError databaseError) {
+
     }
 }

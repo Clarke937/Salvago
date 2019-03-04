@@ -19,4 +19,11 @@ public class Product {
         this.description = description;
         this.price = price;
     }
+
+
+    @Override
+    public boolean equals(Object obj) {
+        boolean ok = (this.title.equals(((Product)obj).title)) ? true : false;
+        return ok;
+    }
 }

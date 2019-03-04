@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:padding="16dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nombre de Producto o Servicio:"
+        />
+    <EditText
+        android:id="@+id/menuproduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/search_shape"
+        android:padding="8dp"
+        android:layout_marginTop="8dp"
+        android:lines="1"
+        android:inputType="textPersonName"
+        android:hint="Ingrese el texto aqui..."
+        />
+    <TextView
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Descripcion corta del producto o servicio:"
+        />
+    <EditText
+        android:id="@+id/menudescript"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/search_shape"
+        android:padding="8dp"
+        android:layout_marginTop="8dp"
+        android:lines="1"
+        android:inputType="textMultiLine"
+        android:hint="Ingrese el texto aqui..."
+        />
+    <TextView
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Precio del producto o servicio:"
+        />
+    <EditText
+        android:id="@+id/menuprice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/search_shape"
+        android:padding="8dp"
+        android:layout_marginTop="8dp"
+        android:lines="1"
+        android:inputType="numberDecimal"
+        android:hint="Ingrese el precio aqui..."
+        />
+
+    <Button
+        android:id="@+id/addtomenu"
+        android:layout_marginTop="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Agregar"
+        android:drawableLeft="@drawable/ic_add"
+        android:drawablePadding="8dp"
+        android:backgroundTint="@color/colorBueno"
+        android:textColor="@color/white"
+        android:drawableTint="@color/white"
+        />
+
+</LinearLayout>

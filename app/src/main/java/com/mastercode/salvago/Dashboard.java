@@ -57,7 +57,6 @@ public class Dashboard extends AppCompatActivity {
         menu.add(new Menuoption(R.drawable.ic_binoculars,"Contador de visitas"));
         menu.add(new Menuoption(R.drawable.ic_payments,"Suscripcion Mensual"));
 
-
         adapter = new Adapter_Dashboard_Menu(menu, this);
         list = findViewById(R.id.dashmenu);
         list.setAdapter(adapter);
