@@ -28,6 +28,7 @@ import com.mastercode.salvago.adapters.Home_Companies;
 import com.mastercode.salvago.database.Cloud;
 import com.mastercode.salvago.database.Cloudfiles;
 import com.mastercode.salvago.models.Company;
+import com.mastercode.salvago.tools.MySession;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -38,8 +39,6 @@ public class Fg_Home_Navigation extends Fragment implements ValueEventListener {
     int index;
     Query ref;
     Context ctx;
-    GeoLocator geolocal;
-    LatLng location;
     Home_Companies adapter;
     List<Company> companies;
     StorageReference storage;
@@ -94,8 +93,6 @@ public class Fg_Home_Navigation extends Fragment implements ValueEventListener {
         rcv.setAdapter(adapter);
         getActivity().setTitle(title);
         storage = new Cloudfiles().getBanners();
-        geolocal = new GeoLocator(getContext(),getActivity());
-        location = new LatLng(geolocal.getLattitude(), geolocal.getLongitude());
         getData();
         return v;
     }
@@ -134,7 +131,7 @@ public class Fg_Home_Navigation extends Fragment implements ValueEventListener {
             com.coordinates = coors;
             double distance = 999999999;
             for (LatLng co: coors){
-                double temp = SphericalUtil.computeDistanceBetween(co, location);
+                double temp = SphericalUtil.computeDistanceBetween(co, MySession.location);
                 Log.e("Navi","Distancia: " + temp);
                 if(temp < distance) distance = temp;
             }

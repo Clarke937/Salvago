@@ -1,12 +1,20 @@
 package com.mastercode.salvago;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.app.AlertDialog;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -19,6 +27,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.inputmethod.InputMethodManager;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.mastercode.salvago.fragments.Fg_Home_Navigation;
 import com.mastercode.salvago.fragments.Fg_Nav_Promos;
 import com.mastercode.salvago.tools.AppNavigation;
@@ -27,19 +36,12 @@ import com.mastercode.salvago.tools.Popups;
 
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
+    Context ctx;
+    View headerview;
     Toolbar toolbar;
     DrawerLayout drawer;
     ActionBarDrawerToggle toggle;
     NavigationView navigationView;
-    View headerview;
-    Context ctx;
-
-    public void initvars(){
-        toolbar = findViewById(R.id.toolbar);
-        drawer = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
-        ctx = this;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,20 +52,28 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         setSupportActionBar(toolbar);
         setTitle("Inicio");
 
-        toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close){
+        toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
             @Override
             public void onDrawerClosed(View drawerView) {
                 InputMethodManager imm = (InputMethodManager) ctx.getSystemService(Activity.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(headerview.getWindowToken(),0);
+                imm.hideSoftInputFromWindow(headerview.getWindowToken(), 0);
                 super.onDrawerClosed(drawerView);
             }
         };
+
         navigationView.setNavigationItemSelectedListener(this);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         headerview = navigationView.getHeaderView(0);
-
         ChangeFragment(MySession.home_fragment);
+    }
+
+    public void initvars() {
+        toolbar = findViewById(R.id.toolbar);
+        drawer = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        ctx = this;
+        getLocation();
     }
 
     @Override
@@ -155,4 +165,38 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         manager.beginTransaction().replace(R.id.fgcontainer,frag).commit();
         drawer.closeDrawer(GravityCompat.START);
     }
+
+
+    private void getLocation(){
+        int check = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
+        if(check == PackageManager.PERMISSION_GRANTED){
+            LocationManager manager = (LocationManager) getSystemService(LOCATION_SERVICE);
+            LocationListener listener = new LocationListener() {
+                @Override
+                public void onLocationChanged(Location location) {
+                    MySession.location = new LatLng(location.getLatitude(), location.getLongitude());
+                }
+
+                @Override
+                public void onStatusChanged(String provider, int status, Bundle extras) {
+
+                }
+
+                @Override
+                public void onProviderEnabled(String provider) {
+
+                }
+
+                @Override
+                public void onProviderDisabled(String provider) {
+
+                }
+            };
+            manager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, listener);
+        }else{
+            Log.e("Home", "Sin permiso de ubicacion");
+        }
+    }
+
+
 }
