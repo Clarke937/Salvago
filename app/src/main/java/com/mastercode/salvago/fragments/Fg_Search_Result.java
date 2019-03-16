@@ -1,5 +1,6 @@
 package com.mastercode.salvago.fragments;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,15 +12,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.StorageReference;
 import com.mastercode.salvago.R;
 import com.mastercode.salvago.adapters.Home_Companies;
 import com.mastercode.salvago.database.Cloud;
+import com.mastercode.salvago.database.Cloudfiles;
 import com.mastercode.salvago.models.Company;
 import com.mastercode.salvago.tools.MySession;
+import com.mastercode.salvago.tools.Statictools;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,6 +38,7 @@ public class Fg_Search_Result extends Fragment implements ValueEventListener {
     Home_Companies adapter;
     List<String> companiesids;
     List<Company> companies;
+    StorageReference bannersRef;
 
     @Nullable
     @Override
@@ -45,6 +51,7 @@ public class Fg_Search_Result extends Fragment implements ValueEventListener {
     private View init(View v){
         companies = new ArrayList<>();
         companiesids = new ArrayList<>();
+        bannersRef = new Cloudfiles().getBanners();
         adapter = new Home_Companies(getContext(), companies);
         rcv = v.findViewById(R.id.rcv);
         rcv.setLayoutManager(new LinearLayoutManager(this.getContext()));
@@ -69,8 +76,12 @@ public class Fg_Search_Result extends Fragment implements ValueEventListener {
                 }else{
                     List<String> words = Arrays.asList(MySession.busqueda.search.trim().toLowerCase().split(","));
                     for (DataSnapshot dtag: d.child("tags").getChildren()) {
-                        String tag = dtag.getValue().toString();
-                        if(words.contains(tag)) companiesids.add(d.getKey());
+                        String tag = dtag.getValue().toString().trim().toLowerCase();
+                        Log.e("Search", "Tag: " + tag);
+                        if(words.contains(tag)) {
+                            companiesids.add(d.getKey());
+                            Log.e("Search", "ID: agregado " + d.getKey());
+                        }
                     }
                 }
             }
@@ -86,10 +97,15 @@ public class Fg_Search_Result extends Fragment implements ValueEventListener {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot dtp : dataSnapshot.getChildren()){
+                    Log.e("Search", "DTP: " + dtp.getKey());
                     for (DataSnapshot id: dtp.getChildren()) {
-                        if(companiesids.contains(id)) AddCompany(id);
+                        if(companiesids.contains(id.getKey())) {
+                            Log.e("Search", "ADD: " + id.getKey());
+                            AddCompany(id);
+                        }
                     }
                 }
+                DownloadPics();
             }
 
             @Override
@@ -105,10 +121,24 @@ public class Fg_Search_Result extends Fragment implements ValueEventListener {
         c.companytype = d.getRef().getKey();
         c.companyname = d.child("info").child("title").getValue().toString();
         c.descripcion = d.child("info").child("description").getValue().toString();
-        if(!companies.contains(c)) companies.add(c);
+        c.proximity = Statictools.getMtsOfMostClose(d.child("locations"));
+        if(!companies.contains(c)) {
+            Log.e("Search", "Company: add");
+            companies.add(c);
+        }
+    }
 
 
-        //adapter.notifyDataSetChanged();
+    public void DownloadPics(){
+        for (final Company c: companies) {
+            bannersRef.child(c.id + ".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    c.banner = uri;
+                    adapter.notifyDataSetChanged();
+                }
+            });
+        }
     }
 
 
