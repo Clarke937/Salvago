@@ -13,9 +13,14 @@ import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.github.javiersantos.materialstyleddialogs.MaterialStyledDialog;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.firebase.database.DataSnapshot;
+import com.google.maps.android.SphericalUtil;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
@@ -122,6 +127,27 @@ public class Statictools {
     }
 
 
+    public static double MtsToKms(double mts){
+        return mts / 1000;
+    }
+
+    public static double getMtsOfMostClose(DataSnapshot d){
+        double mts = 0;
+        List<Double> distancias = new ArrayList<>();
+
+        for (DataSnapshot da: d.getChildren()) {
+            double lat = Double.parseDouble(da.child("lat").getValue().toString());
+            double lon = Double.parseDouble(da.child("lon").getValue().toString());
+
+            LatLng coor = new LatLng(lat, lon);
+            if(coor == null) Log.e("Sort", "Coor - Null");
+            if(MySession.location == null) Log.e("Sort", "Location - Null");
+            double distancia = SphericalUtil.computeDistanceBetween(coor, MySession.location);
+            distancias.add(distancia);
+        }
+        Collections.sort(distancias);
+        return Math.round(distancias.get(0));
+    }
 
 
 

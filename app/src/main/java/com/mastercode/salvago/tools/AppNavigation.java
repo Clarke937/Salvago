@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.mastercode.salvago.Access;
+import com.mastercode.salvago.Appinfo;
 import com.mastercode.salvago.BugReport;
 import com.mastercode.salvago.Dashboard;
 import com.mastercode.salvago.Dashcontent;
@@ -58,6 +59,10 @@ public class AppNavigation {
         Intent i = new Intent(ctx, Dashcontent.class);
         i.putExtra("view", index);
         ctx.startActivity(i);
+    }
+
+    public static void goAppinfo(Context ctx){
+        ctx.startActivity(new Intent(ctx, Appinfo.class));
     }
 
 }

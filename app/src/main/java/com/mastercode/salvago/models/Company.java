@@ -21,6 +21,7 @@ public class Company implements Comparable<Company>{
     public List<Integer> telephones;
     public List<LatLng> coordinates;
     public String telephone;
+    public String companytype;
     public boolean premium;
     public double proximity;
 

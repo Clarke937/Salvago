@@ -21,12 +21,10 @@ public class Home_Companies extends RecyclerView.Adapter<Home_Companies.VwHolder
 
     private Context ctx;
     private List<Company> companies;
-    private String type;
 
-    public Home_Companies(Context c, List<Company> com, String typ){
+    public Home_Companies(Context c, List<Company> com){
         this.ctx = c;
         this.companies = com;
-        this.type = typ;
     }
 
     @NonNull
@@ -44,12 +42,7 @@ public class Home_Companies extends RecyclerView.Adapter<Home_Companies.VwHolder
         if(!com.premium) vwHolder.tvName.setCompoundDrawables(null, null, null, null);
 
         vwHolder.tvDescript.setText(com.descripcion);
-
-        if(com.telephone != null){
-            vwHolder.tvPhone.setText(com.telephone);
-        }else{
-            vwHolder.tvPhone.setText("N/A");
-        }
+        vwHolder.tvPhone.setText(com.proximity + " mts");
 
         if(com.banner != null){
             Glide.with(ctx).load(com.banner).into(vwHolder.image);
@@ -58,7 +51,7 @@ public class Home_Companies extends RecyclerView.Adapter<Home_Companies.VwHolder
         vwHolder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AppNavigation.goFanpage(type,com.id,ctx);
+                AppNavigation.goFanpage(com.companytype,com.id,ctx);
             }
         });
     }

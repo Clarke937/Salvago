@@ -1,5 +1,6 @@
 package com.mastercode.salvago.fragments;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.location.LocationManager;
 import android.net.Uri;
@@ -29,6 +30,7 @@ import com.mastercode.salvago.database.Cloud;
 import com.mastercode.salvago.database.Cloudfiles;
 import com.mastercode.salvago.models.Company;
 import com.mastercode.salvago.tools.MySession;
+import com.mastercode.salvago.tools.Statictools;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -42,19 +44,21 @@ public class Fg_Home_Navigation extends Fragment implements ValueEventListener {
     Home_Companies adapter;
     List<Company> companies;
     StorageReference storage;
-    LocationManager locamanager;
+    ProgressDialog progress;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fg_recyclerview,container,false);
         index = getArguments().getInt("option");
-        locamanager = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
         ctx = this.getContext();
         return init(v);
     }
 
     public View init(View v){
+
+        progress = new ProgressDialog(getContext());
+
         RecyclerView rcv = v.findViewById(R.id.rcv);
         rcv.setLayoutManager(new LinearLayoutManager(this.getContext()));
         rcv.setHasFixedSize(true);
@@ -64,27 +68,27 @@ public class Fg_Home_Navigation extends Fragment implements ValueEventListener {
 
         switch (index) {
             case 1:
-                adapter = new Home_Companies(this.getContext(),companies,"restaurants");
+                adapter = new Home_Companies(this.getContext(),companies);
                 ref = new Cloud().getRestaurants();
                 title = "Restaurantes";
                 break;
             case 2:
-                adapter = new Home_Companies(this.getContext(),companies,"tourist");
+                adapter = new Home_Companies(this.getContext(),companies);
                 ref = new Cloud().getTourist();
                 title = "Turismo";
                 break;
             case 3:
-                adapter = new Home_Companies(this.getContext(),companies,"hotels");
+                adapter = new Home_Companies(this.getContext(),companies);
                 ref = new Cloud().getHotels();
                 title = "Hospedajes";
                 break;
             case 4:
-                adapter = new Home_Companies(this.getContext(),companies,"shops");
+                adapter = new Home_Companies(this.getContext(),companies);
                 ref = new Cloud().getShops();
                 title = "Tiendas";
                 break;
             case 5:
-                adapter = new Home_Companies(this.getContext(),companies,"services");
+                adapter = new Home_Companies(this.getContext(),companies);
                 ref = new Cloud().getServices();
                 title = "Servicios";
                 break;
@@ -107,6 +111,8 @@ public class Fg_Home_Navigation extends Fragment implements ValueEventListener {
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
+        progress.show();
+
         for(DataSnapshot d : dataSnapshot.getChildren()){
 
             final Company com = new Company();
@@ -114,30 +120,13 @@ public class Fg_Home_Navigation extends Fragment implements ValueEventListener {
             com.companyname = d.child("info").child("title").getValue().toString();
             com.descripcion = d.child("info").child("description").getValue().toString();
             com.premium = Boolean.parseBoolean(d.child("account").child("premium").getValue().toString());
-
+            com.companytype = d.getRef().getKey();
             Log.e("Navi", com.companyname);
 
             //Obtencion de las coordenadas de todas las sucursales
-            List<LatLng> coors = new ArrayList<>();
-            DataSnapshot locations = d.child("locations");
-            if(locations.exists()){
-                for(DataSnapshot dl : locations.getChildren()){
-                    double lat = Double.parseDouble(dl.child("lat").getValue().toString());
-                    double lon = Double.parseDouble(dl.child("lon").getValue().toString());
-                    LatLng ltlg = new LatLng(lat, lon);
-                    coors.add(ltlg);
-                }
+            if(d.child("locations").exists()){
+                com.proximity = Statictools.getMtsOfMostClose(d.child("locations"));
             }
-            com.coordinates = coors;
-            double distance = 999999999;
-            for (LatLng co: coors){
-                double temp = SphericalUtil.computeDistanceBetween(co, MySession.location);
-                Log.e("Navi","Distancia: " + temp);
-                if(temp < distance) distance = temp;
-            }
-
-            com.telephone = Math.round(distance) + " mts";
-            com.proximity = Math.round(distance);
             companies.add(com);
         }
 
@@ -166,6 +155,7 @@ public class Fg_Home_Navigation extends Fragment implements ValueEventListener {
         Collections.sort(normals);
 
         companies.clear();
+
         companies.addAll(premiums);
         companies.addAll(normals);
         DownloadPics();
@@ -181,8 +171,14 @@ public class Fg_Home_Navigation extends Fragment implements ValueEventListener {
                 }
             });
         }
+        progress.dismiss();
     }
 
+    public void DoSearch(List<Company> companies){
+        for (Company com: companies) {
+
+        }
+    }
 
 
 }
