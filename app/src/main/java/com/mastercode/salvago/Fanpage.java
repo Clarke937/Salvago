@@ -9,6 +9,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -48,10 +49,13 @@ public class Fanpage extends AppCompatActivity implements View.OnClickListener{
     }
 
 
-
     public void init(){
         companyid = getIntent().getExtras().getString("id");
         companytype = getIntent().getExtras().getString("type");
+
+        Log.e("Fanpage", companyid);
+        Log.e("Fanpage", companytype);
+
         setTitle(companyid);
         ctx = this;
 

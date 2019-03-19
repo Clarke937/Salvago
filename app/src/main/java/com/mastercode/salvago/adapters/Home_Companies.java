@@ -76,4 +76,8 @@ public class Home_Companies extends RecyclerView.Adapter<Home_Companies.VwHolder
             card = itemView.findViewById(R.id.card);
         }
     }
+
+
+
+
 }

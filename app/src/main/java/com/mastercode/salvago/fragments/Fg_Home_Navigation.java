@@ -120,8 +120,8 @@ public class Fg_Home_Navigation extends Fragment implements ValueEventListener {
             com.companyname = d.child("info").child("title").getValue().toString();
             com.descripcion = d.child("info").child("description").getValue().toString();
             com.premium = Boolean.parseBoolean(d.child("account").child("premium").getValue().toString());
-            com.companytype = d.getRef().getKey();
-            Log.e("Navi", com.companyname);
+            com.companytype = dataSnapshot.getKey();
+            Log.e("Fanpage Fg", com.companytype);
 
             //Obtencion de las coordenadas de todas las sucursales
             if(d.child("locations").exists()){
@@ -172,12 +172,6 @@ public class Fg_Home_Navigation extends Fragment implements ValueEventListener {
             });
         }
         progress.dismiss();
-    }
-
-    public void DoSearch(List<Company> companies){
-        for (Company com: companies) {
-
-        }
     }
 
 

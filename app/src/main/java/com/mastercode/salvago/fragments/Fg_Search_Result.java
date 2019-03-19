@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
@@ -39,6 +40,7 @@ public class Fg_Search_Result extends Fragment implements ValueEventListener {
     List<String> companiesids;
     List<Company> companies;
     StorageReference bannersRef;
+    RelativeLayout emptyview;
 
     @Nullable
     @Override
@@ -53,6 +55,7 @@ public class Fg_Search_Result extends Fragment implements ValueEventListener {
         companiesids = new ArrayList<>();
         bannersRef = new Cloudfiles().getBanners();
         adapter = new Home_Companies(getContext(), companies);
+        emptyview = v.findViewById(R.id.emptyview);
         rcv = v.findViewById(R.id.rcv);
         rcv.setLayoutManager(new LinearLayoutManager(this.getContext()));
         rcv.setHasFixedSize(true);
@@ -87,7 +90,12 @@ public class Fg_Search_Result extends Fragment implements ValueEventListener {
             }
         }
 
-        LoadCompanies();
+        if(companiesids.size() > 0){
+            LoadCompanies();
+            emptyview.setVisibility(View.GONE);
+        }else{
+            emptyview.setVisibility(View.VISIBLE);
+        }
     }
 
 

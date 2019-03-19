@@ -5,13 +5,17 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.mastercode.salvago.fragments.Fg_Dashboard_Catalog;
 import com.mastercode.salvago.fragments.Fg_Dashboard_Information;
 import com.mastercode.salvago.fragments.Fg_Dashboard_Tags;
+import com.mastercode.salvago.fragments.Fg_Dashboard_Visits;
 
 public class Dashcontent extends AppCompatActivity {
 
@@ -20,12 +24,21 @@ public class Dashcontent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashcontent);
         Toolbar toolbar = findViewById(R.id.toolbar);
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        statusbarcolor();
 
         //Get parameter
         int index = getIntent().getIntExtra("view", 0);
         changeFragment(index);
+    }
+
+    public void statusbarcolor(){
+        Window window = this.getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(ContextCompat.getColor(this,R.color.dashboardhead));
     }
 
     public void changeFragment(int i){
@@ -40,6 +53,9 @@ public class Dashcontent extends AppCompatActivity {
                 break;
             case 4:
                 fg = new Fg_Dashboard_Catalog();
+                break;
+            case 7:
+                fg = new Fg_Dashboard_Visits();
                 break;
             default:
                 fg = new Fragment();

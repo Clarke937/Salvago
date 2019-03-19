@@ -37,6 +37,16 @@ public class Statictools {
         return fecha;
     }
 
+    public static String getYesterdaySimpleDate(){
+        String fecha = "";
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.DAY_OF_YEAR,Calendar.DAY_OF_YEAR - 1);
+        fecha += cal.get(Calendar.DAY_OF_MONTH) + "-";
+        fecha += (cal.get(Calendar.MONTH) + 1) + "-";
+        fecha += cal.get(Calendar.YEAR);
+        return fecha;
+    }
+
     public static boolean isEmailValid(String mail){
         boolean ok = true;
         try {
@@ -132,7 +142,6 @@ public class Statictools {
     }
 
     public static double getMtsOfMostClose(DataSnapshot d){
-        double mts = 0;
         List<Double> distancias = new ArrayList<>();
 
         for (DataSnapshot da: d.getChildren()) {
@@ -142,13 +151,49 @@ public class Statictools {
             LatLng coor = new LatLng(lat, lon);
             if(coor == null) Log.e("Sort", "Coor - Null");
             if(MySession.location == null) Log.e("Sort", "Location - Null");
-            double distancia = SphericalUtil.computeDistanceBetween(coor, MySession.location);
-            distancias.add(distancia);
+            if(MySession.location != null){
+                double distancia = SphericalUtil.computeDistanceBetween(coor, MySession.location);
+                distancias.add(distancia);
+            }
         }
         Collections.sort(distancias);
-        return Math.round(distancias.get(0));
+        if(distancias.size()>=1){
+            return Math.round(distancias.get(0));
+        }
+
+        return 0;
     }
 
+
+    public static String getMonthAbv(int n){
+
+        switch (n) {
+            case 1:
+                return "ENE";
+            case 2:
+                return "FEB";
+            case 3:
+                return "MAR";
+            case 4:
+                return "ABR";
+            case 5:
+                return "MAY";
+            case 6:
+                return "JUN";
+            case 7:
+                return "JUL";
+            case 8:
+                return "AGO";
+            case 9:
+                return "SEP";
+            case 10:
+                return "OCT";
+            case 11:
+                return "NOV";
+            default:
+                return "DEC";
+        }
+    }
 
 
 }
