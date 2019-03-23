@@ -55,6 +55,7 @@ public class Dashboard extends AppCompatActivity {
         menu.add(new Menuoption(R.drawable.ic_discount,"Promociones"));
         menu.add(new Menuoption(R.drawable.ic_3_stars_outlines,"Evaluacion"));
         menu.add(new Menuoption(R.drawable.ic_binoculars,"Contador de visitas"));
+        menu.add(new Menuoption(R.drawable.ic_network,"Redes Sociales"));
         menu.add(new Menuoption(R.drawable.ic_payments,"Suscripcion Mensual"));
 
         adapter = new Adapter_Dashboard_Menu(menu, this);

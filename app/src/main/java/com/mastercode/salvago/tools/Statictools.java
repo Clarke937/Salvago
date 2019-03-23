@@ -40,10 +40,11 @@ public class Statictools {
     public static String getYesterdaySimpleDate(){
         String fecha = "";
         Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.DAY_OF_YEAR,Calendar.DAY_OF_YEAR - 1);
+        cal.add(Calendar.DATE, -1);
         fecha += cal.get(Calendar.DAY_OF_MONTH) + "-";
         fecha += (cal.get(Calendar.MONTH) + 1) + "-";
         fecha += cal.get(Calendar.YEAR);
+
         return fecha;
     }
 
@@ -93,6 +94,20 @@ public class Statictools {
         return builder;
     }
 
+    public static long SimpleDateToMilis(String date){
+        String build[] = date.split("-");
+        int day = Integer.parseInt(build[0]);
+        int mon = Integer.parseInt(build[1]) - 1;
+        int yea = Integer.parseInt(build[2]);
+
+        Calendar cal = Calendar.getInstance();
+        cal.set(yea,mon,day);
+        Log.e("Calendar", "Day: " + cal.get(Calendar.DAY_OF_MONTH));
+        Log.e("Calendar", "MONTH: " + cal.get(Calendar.MONTH));
+        Log.e("Calendar", "YEAR: " + cal.get(Calendar.DAY_OF_MONTH));
+
+        return cal.getTimeInMillis();
+    }
 
     public static boolean isToday(long milis){
         String today = getSimpleDate();

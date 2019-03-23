@@ -39,6 +39,7 @@ public class Fg_Dashboard_Visits extends Fragment implements ValueEventListener 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fg_dashboard_visits, container,false);
+        getActivity().setTitle("Visitas");
         return init(v);
     }
 
@@ -94,6 +95,7 @@ public class Fg_Dashboard_Visits extends Fragment implements ValueEventListener 
         String fyeste = NumberFormat.getNumberInstance(Locale.US).format(yesterday);
         vyesterday.setText(fyeste);
 
+        Collections.sort(visits);
         Collections.reverse(visits);
         adapter.notifyDataSetChanged();
     }

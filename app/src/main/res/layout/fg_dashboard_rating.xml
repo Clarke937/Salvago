@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:background="@color/dashboardhead"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+
+            <ImageView
+                android:layout_weight="1"
+                android:id="@+id/wave_star"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:src="@drawable/ic_rating"
+                android:tint="@color/white"
+                />
+            <RelativeLayout
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/rating_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="50dp"
+                    android:text="0/0"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    />
+                <TextView
+                    android:id="@+id/rating_text"
+                    android:layout_below="@id/rating_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lines="1"
+                    android:textSize="20dp"
+                    android:text="Excelente!"
+                    android:textAlignment="center"
+                    android:textColor="@color/Almostwhite"
+                    />
+            </RelativeLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:tag="0"
+            android:padding="16dp"
+            android:clickable="true"
+            android:id="@+id/btnRating1"
+            android:background="?attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Comentarios Positivos"
+                android:drawableLeft="@drawable/ic_commentary"
+                android:gravity="center_vertical"
+                android:drawableTint="@color/colorSecondaryText"
+                android:drawablePadding="8dp"
+                />
+
+            <TextView
+                android:id="@+id/goodCounter"
+                android:background="@drawable/shape_number_accent"
+                android:textColor="@color/white"
+                android:padding="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="16dp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:tag="1"
+            android:padding="16dp"
+            android:clickable="true"
+            android:id="@+id/btnRating2"
+            android:background="?attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Comentarios Neutrales"
+                android:drawableLeft="@drawable/ic_commentary"
+                android:gravity="center_vertical"
+                android:drawableTint="@color/colorSecondaryText"
+                android:drawablePadding="8dp"
+                />
+
+            <TextView
+                android:id="@+id/normalCounter"
+                android:background="@drawable/shape_number_accent"
+                android:textColor="@color/white"
+                android:padding="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="16dp"
+                />
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:tag="2"
+            android:padding="16dp"
+            android:clickable="true"
+            android:id="@+id/btnRating3"
+            android:background="?attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Comentarios Negativos"
+                android:drawableLeft="@drawable/ic_commentary"
+                android:gravity="center_vertical"
+                android:drawableTint="@color/colorSecondaryText"
+                android:drawablePadding="8dp"
+                />
+
+            <TextView
+                android:id="@+id/badCounter"
+                android:background="@drawable/shape_number_accent"
+                android:textColor="@color/white"
+                android:padding="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="0"
+                android:textSize="16dp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>
+
+

@@ -76,7 +76,7 @@ public class Fg_Nav_Promos extends Fragment implements ValueEventListener {
 
                         long expira = Long.parseLong(d.child("findate").getValue().toString());
 
-                        if(Statictools.DateExpired(expira)){
+                        if(!Statictools.DateExpired(expira)){
                             final Promo pro = new Promo();
                             pro.id = d.getKey();
                             pro.description = d.child("description").getValue().toString();
