@@ -18,6 +18,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.mastercode.salvago.R;
 import com.mastercode.salvago.database.Cloud;
 import com.mastercode.salvago.models.Opinion;
+import com.mastercode.salvago.tools.MySession;
 
 import java.util.List;
 
@@ -52,7 +53,10 @@ public class Fg_Dashboard_Rating extends Fragment implements View.OnClickListene
         tvValue = v.findViewById(R.id.rating_value);
         tvNormal = v.findViewById(R.id.normalCounter);
 
-        ref = new Cloud().getRatingOfCompany("restaurants", "@testcompany1");
+
+        String companytype = MySession.dashcompany.companytype;
+        String companyid = MySession.dashcompany.id;
+        ref = new Cloud().getRatingOfCompany(companytype,companyid);
         ref.addListenerForSingleValueEvent(this);
 
         return v;
@@ -73,6 +77,7 @@ public class Fg_Dashboard_Rating extends Fragment implements View.OnClickListene
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
         int goods = 0, bads = 0, normal = 0, suma =0;
+
         for(DataSnapshot d : dataSnapshot.getChildren()){
             int points = Integer.parseInt(d.child("points").getValue().toString());
             suma += points;

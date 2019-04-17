@@ -14,9 +14,11 @@ import android.view.WindowManager;
 
 import com.mastercode.salvago.fragments.Fg_Dashboard_Catalog;
 import com.mastercode.salvago.fragments.Fg_Dashboard_Information;
+import com.mastercode.salvago.fragments.Fg_Dashboard_Photos;
 import com.mastercode.salvago.fragments.Fg_Dashboard_Rating;
 import com.mastercode.salvago.fragments.Fg_Dashboard_Tags;
 import com.mastercode.salvago.fragments.Fg_Dashboard_Visits;
+import com.mastercode.salvago.fragments.fg_Dashboard_Social;
 
 public class Dashcontent extends AppCompatActivity {
 
@@ -49,6 +51,11 @@ public class Dashcontent extends AppCompatActivity {
             case 0:
                 fg = new Fg_Dashboard_Information();
                 break;
+            case 1:
+                fg = new Fg_Dashboard_Photos();
+                break;
+            case 2:
+                break;
             case 3:
                 fg = new Fg_Dashboard_Tags();
                 break;
@@ -60,6 +67,9 @@ public class Dashcontent extends AppCompatActivity {
                 break;
             case 7:
                 fg = new Fg_Dashboard_Visits();
+                break;
+            case 8:
+                fg = new fg_Dashboard_Social();
                 break;
             default:
                 fg = new Fragment();

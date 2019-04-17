@@ -62,8 +62,11 @@ public class MainActivity extends AppCompatActivity {
     public void prepare(){
         FirebaseOptions.Builder build = new FirebaseOptions.Builder()
                 .setApplicationId("1:490257703475:android:d10fbbdf33f1217b")
-                .setApiKey("AAAAciWi4jM:APA91bFmX6gz25UwkWuRvTdYHpLII5BXAXhMzS21qlA7aADhlG-rAcp-GAtDtv6iW4ScbsdZQVLO6cX1noZcWYS50YD4h4a70uGaDaocUK9Cf6gQNBDNVJgWX-NYCqQI1MMjuGWddd3b")
+
+                .setApiKey("AIzaSyCLKZQnVGsDXEPqiHYB6WfNMHz3HNpL1H0")
+                //.setApiKey("AAAAciWi4jM:APA91bFmX6gz25UwkWuRvTdYHpLII5BXAXhMzS21qlA7aADhlG-rAcp-GAtDtv6iW4ScbsdZQVLO6cX1noZcWYS50YD4h4a70uGaDaocUK9Cf6gQNBDNVJgWX-NYCqQI1MMjuGWddd3b")
                 .setDatabaseUrl("https://salva-go.firebaseio.com/")
+
                 .setProjectId("salva-go")
                 .setStorageBucket("salva-go.appspot.com")
                 .setGcmSenderId("490257703475");

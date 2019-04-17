@@ -48,8 +48,9 @@ public class Fanpage_Pics extends BaseAdapter implements View.OnClickListener {
         ImageView img = convertView.findViewById(R.id.companyimage);
         Glide.with(ctx).load(url).into(img);
 
-        convertView.setOnClickListener(this);
         convertView.setTag(url);
+        convertView.setOnClickListener(this);
+
 
         return convertView;
     }

@@ -22,6 +22,7 @@ import com.mastercode.salvago.R;
 import com.mastercode.salvago.adapters.Rcv_Menu_Adapter;
 import com.mastercode.salvago.database.Cloud;
 import com.mastercode.salvago.models.Product;
+import com.mastercode.salvago.tools.MySession;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +56,9 @@ public class Fg_Dashboard_Catalog extends Fragment implements View.OnClickListen
         rcv.setHasFixedSize(true);
         rcv.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        ref = new Cloud().getMenuOfCompany("restaurants", "@testcompany2");
+        String companytype = MySession.dashcompany.companytype;
+        String companyid = MySession.dashcompany.id;
+        ref = new Cloud().getMenuOfCompany(companytype,companyid);
 
         adapter = new Rcv_Menu_Adapter(getContext(), products);
         rcv.setAdapter(adapter);

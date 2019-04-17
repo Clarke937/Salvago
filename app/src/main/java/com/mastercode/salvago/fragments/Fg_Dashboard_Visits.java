@@ -19,6 +19,7 @@ import com.mastercode.salvago.R;
 import com.mastercode.salvago.adapters.Adapter_Visits_Timeline;
 import com.mastercode.salvago.database.Cloud;
 import com.mastercode.salvago.models.Visitday;
+import com.mastercode.salvago.tools.MySession;
 import com.mastercode.salvago.tools.Statictools;
 
 import java.text.NumberFormat;
@@ -58,7 +59,9 @@ public class Fg_Dashboard_Visits extends Fragment implements ValueEventListener 
         rcv.setLayoutManager(new LinearLayoutManager(getContext()));
         rcv.setAdapter(adapter);
 
-        ref = new Cloud().getVisitsOfCompany("restaurants", "@testcompany2");
+        String companyid = MySession.dashcompany.id;
+        String companytype = MySession.dashcompany.companytype;
+        ref = new Cloud().getVisitsOfCompany(companytype,companyid);
         ref.addListenerForSingleValueEvent(this);
         return v;
     }

@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "490257703475-g535382h6odpg7foi1m6absc0jika2r7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mastercode.salvago",
+            "certificate_hash": "c15853d62a17b4462825a60c4734c98f35a5934f"
+          }
+        },
+        {
           "client_id": "490257703475-5uagr65j417jk8obcveo7djqjlgieh1l.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -33,20 +41,13 @@
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 2,
           "other_platform_oauth_client": [
             {
               "client_id": "490257703475-5uagr65j417jk8obcveo7djqjlgieh1l.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
-        },
-        "ads_service": {
-          "status": 2
         }
       }
     }

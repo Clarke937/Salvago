@@ -1,8 +1,8 @@
 <resources>
     <!---PERSONAL STRINGS-->
-    <string name="precio1">$14.90</string>
-    <string name="precio3">$39.90</string>
-    <string name="precio12">$149.90</string>
+    <string name="precio1">$9.99</string>
+    <string name="precio3">$24.99</string>
+    <string name="precio12">$99.99</string>
 
     <string name="sorryForBug">
         SalvaGo es un proyecto aun en desarrollo y agradecemos tu comprension si surge algun imprevisto, para ayudarnos a mejor la aplicacion y ofrecerte una mejor experiencia de uso describenos tu problema con mucho detalle. Muchas Gracias
