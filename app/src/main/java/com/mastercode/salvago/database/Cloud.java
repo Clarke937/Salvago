@@ -43,6 +43,10 @@ public class Cloud {
         return ref.child("companies").child("restaurants").child(name).child("info");
     }
 
+    public DatabaseReference getInfoOfCompany(String type, String company){
+        return ref.child("companies").child(type).child(company).child("info");
+    }
+
     public DatabaseReference getVisitsOfCompany(String companytype, String company){
         return ref.child("companies").child(companytype).child(company).child("visits");
     }

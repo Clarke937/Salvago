@@ -48,7 +48,7 @@ public class Fg_Fanpage_Info extends Fragment implements ValueEventListener {
         adapter = new Fanpage_info(this.getContext(), items);
         listview.setAdapter(adapter);
 
-        DatabaseReference ref = new Cloud().getRestaurantInfo(Fanpage.companyid);
+        DatabaseReference ref = new Cloud().getInfoOfCompany(Fanpage.companytype,Fanpage.companyid);
         ref.addListenerForSingleValueEvent(this);
 
         return v;
@@ -87,10 +87,6 @@ public class Fg_Fanpage_Info extends Fragment implements ValueEventListener {
     @Override
     public void onCancelled(@NonNull DatabaseError databaseError) {
 
-    }
-
-    public int getChildInt(DataSnapshot d, String key){
-        return Integer.parseInt(d.child(key).getValue().toString());
     }
 
 }
