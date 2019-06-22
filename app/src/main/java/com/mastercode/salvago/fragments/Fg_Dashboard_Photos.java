@@ -1,6 +1,5 @@
 package com.mastercode.salvago.fragments;
 
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,10 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
-import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
+import com.google.android.gms.auth.api.signin.internal.Storage;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,37 +30,31 @@ import com.mastercode.salvago.tools.MySession;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Fg_Dashboard_Photos extends Fragment implements ValueEventListener {
+public class Fg_Dashboard_Photos extends Fragment implements ValueEventListener, View.OnClickListener {
 
-    GridView grid;
-    List<String> urls;
     List<Uri> uris;
+    GridView photogrid;
     DatabaseReference ref;
     StorageReference storage;
-    FloatingActionButton fab;
-    String companytype,companyid;
     Adapter_Dashboard_Pics adapter;
+    FloatingActionButton fab;
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fg_photogallery,container,false);
+        View v = inflater.inflate(R.layout.fg_dashboard_pics,container,false);
         return init(v);
     }
 
     public View init(View v) {
-        urls = new ArrayList<>();
         uris = new ArrayList<>();
-        fab = v.findViewById(R.id.fab);
-        grid = v.findViewById(R.id.gdv);
-
+        photogrid = v.findViewById(R.id.gridpcisview);
         adapter = new Adapter_Dashboard_Pics(this.getContext(),uris);
-        grid.setAdapter(adapter);
+        photogrid.setAdapter(adapter);
 
-        companytype = MySession.dashcompany.companytype;
-        companyid = MySession.dashcompany.id;
-
-        ref = new Cloud().getPicsOfCompany(companytype,companyid);
+        ref = new Cloud().getPicsOfCompany(MySession.dashcompany.companytype,MySession.dashcompany.id);
+        storage = new Cloudfiles().getCompanyPics(MySession.dashcompany.id);
         ref.addListenerForSingleValueEvent(this);
         return v;
     }
@@ -68,35 +62,24 @@ public class Fg_Dashboard_Photos extends Fragment implements ValueEventListener 
 
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-        urls.clear();
-        for (DataSnapshot d : dataSnapshot.getChildren()){
-            String u = d.getValue().toString();
-            urls.add(u);
-            Log.e("PHOTO", u.trim());
-        }
-        DownloadPics();
-    }
-
-    public void DownloadPics()
-    {
-        storage = new Cloudfiles().getCompanyPics(companyid);
-        //uris.clear();
-        for(String u : urls){
-            storage.child(u).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+        for(DataSnapshot d : dataSnapshot.getChildren()){
+            storage.child(d.getValue().toString()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
                     uris.add(uri);
-                    Log.e("PHOTO URI:",uri.toString());
                     adapter.notifyDataSetChanged();
                 }
             });
         }
-        adapter.notifyDataSetChanged();
     }
-
 
     @Override
     public void onCancelled(@NonNull DatabaseError databaseError) {
+
+    }
+
+    @Override
+    public void onClick(View v) {
 
     }
 }

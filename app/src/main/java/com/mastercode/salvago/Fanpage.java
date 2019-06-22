@@ -35,6 +35,7 @@ public class Fanpage extends AppCompatActivity implements View.OnClickListener{
     FloatingActionButton fab;
     public static String companyid = "";
     public static String companytype = "";
+    public static String companyname = "";
     StorageReference storage;
 
     @Override
@@ -52,11 +53,10 @@ public class Fanpage extends AppCompatActivity implements View.OnClickListener{
     public void init(){
         companyid = getIntent().getExtras().getString("id");
         companytype = getIntent().getExtras().getString("type");
+        companyname = getIntent().getExtras().getString("name");
 
-        Log.e("Fanpage", companyid);
-        Log.e("Fanpage", companytype);
-
-        setTitle(companyid);
+        setTitle(companyname);
+        toolbar.setSubtitle(companyid);
         ctx = this;
 
         banner = findViewById(R.id.companybanner);

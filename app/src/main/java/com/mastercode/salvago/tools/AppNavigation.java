@@ -16,10 +16,11 @@ import com.mastercode.salvago.Register;
 
 public class AppNavigation {
 
-    public static void goFanpage(String type, String company, Context ctx){
+    public static void goFanpage(String type, String company,String name, Context ctx){
         Intent i = new Intent(ctx, Fanpage.class);
         i.putExtra("id",company);
         i.putExtra("type",type);
+        i.putExtra("name",name);
         ctx.startActivity(i);
     }
 

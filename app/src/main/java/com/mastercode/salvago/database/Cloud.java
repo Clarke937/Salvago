@@ -87,4 +87,9 @@ public class Cloud {
     public DatabaseReference getSocialNets(String type, String company){
         return  ref.child("companies").child(type).child(company).child("info").child("social");
     }
+
+    public DatabaseReference getPromosOfCompany(String type, String company){
+        return ref.child("companies").child(type).child(company).child("promos");
+    }
+
 }

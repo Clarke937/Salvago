@@ -11,6 +11,8 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.mastercode.salvago.R;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Adapter_Dashboard_Pics extends BaseAdapter {
@@ -18,10 +20,9 @@ public class Adapter_Dashboard_Pics extends BaseAdapter {
     private Context ctx;
     private List<Uri> urls;
 
-    public Adapter_Dashboard_Pics(Context ctx, List<Uri> u) {
+    public Adapter_Dashboard_Pics(Context ctx, List<Uri> uris) {
         this.ctx = ctx;
-        this.urls = u;
-        Log.e("PHOTO","Constructor");
+        this.urls = uris;
     }
 
     @Override
@@ -39,23 +40,20 @@ public class Adapter_Dashboard_Pics extends BaseAdapter {
         return position;
     }
 
-    /*public void addItem(Uri uri){
+    public void addItem(Uri uri){
         this.urls.add(uri);
-        Log.e("PHOTO-SIZE", this.urls.size()+"");
         this.notifyDataSetChanged();
-    }*/
+    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Uri u = urls.get(position);
-        Log.e("PHOTO POSITION:",position + "");
-
         if(convertView == null){
-            convertView = LayoutInflater.from(ctx).inflate(R.layout.view_pic, parent,false);
+            convertView = LayoutInflater.from(ctx).inflate(R.layout.view_pic,parent,false);
         }
-        ImageView iv = convertView.findViewById(R.id.dash_pic);
-        Glide.with(ctx).load(u).into(iv);
 
+        ImageView view = convertView.findViewById(R.id.dash_pic);
+        Glide.with(ctx).load(u).into(view);
 
 
         return convertView;

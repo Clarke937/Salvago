@@ -113,11 +113,15 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if(id == R.id.menu_giftcard){
-            AppNavigation.goGiftcards(this);
-        }else if(id == R.id.menu_search){
-            Intent i = new Intent(this,Search.class);
-            startActivityForResult(i,1);
+
+        switch (id){
+            /*case R.id.menu_giftcard:
+                AppNavigation.goGiftcards(this);
+                break;*/
+            case R.id.menu_search:
+                Intent i = new Intent(this,Search.class);
+                startActivityForResult(i,1);
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

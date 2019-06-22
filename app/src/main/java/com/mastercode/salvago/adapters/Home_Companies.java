@@ -51,7 +51,7 @@ public class Home_Companies extends RecyclerView.Adapter<Home_Companies.VwHolder
         vwHolder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AppNavigation.goFanpage(com.companytype,com.id,ctx);
+                AppNavigation.goFanpage(com.companytype,com.id,com.companyname,ctx);
             }
         });
     }

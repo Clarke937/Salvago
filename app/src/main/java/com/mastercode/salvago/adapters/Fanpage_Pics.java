@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -59,11 +60,23 @@ public class Fanpage_Pics extends BaseAdapter implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         Uri uri = (Uri) v.getTag();
-        AlertDialog.Builder build = new AlertDialog.Builder(ctx);
+        final AlertDialog.Builder build = new AlertDialog.Builder(ctx);
         View vi = LayoutInflater.from(ctx).inflate(R.layout.view_picdialog,null,false);
         ImageView img = vi.findViewById(R.id.picture);
+        ImageButton close = vi.findViewById(R.id.close_pic);
+
+        final AlertDialog alert = build.create();
+
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alert.dismiss();
+            }
+        });
+
+
         Glide.with(ctx).load(uri).into(img);
-        build.setView(vi);
-        build.create().show();
+        alert.setView(vi);
+        alert.show();
     }
 }

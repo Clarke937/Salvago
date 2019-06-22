@@ -6,10 +6,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <GridView
-        android:id="@+id/gdv"
+        android:id="@+id/photogrid"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:numColumns="1">
+        android:numColumns="2">
     </GridView>
 
 

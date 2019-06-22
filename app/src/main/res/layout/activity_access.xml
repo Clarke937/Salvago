@@ -63,6 +63,7 @@
             android:drawableLeft="@drawable/ic_superviso"
             android:drawablePadding="10dp"
             android:drawableTint="#60FFFFFF"
+            android:text="@testcompany2"
             />
         <EditText
             android:id="@+id/input_password"
@@ -79,6 +80,7 @@
             android:drawableLeft="@drawable/ic_lock"
             android:drawablePadding="10dp"
             android:drawableTint="#60FFFFFF"
+            android:text="test123"
             />
 
 

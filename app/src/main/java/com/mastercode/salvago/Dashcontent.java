@@ -55,6 +55,7 @@ public class Dashcontent extends AppCompatActivity {
                 fg = new Fg_Dashboard_Photos();
                 break;
             case 2:
+                fg = new Fragment();
                 break;
             case 3:
                 fg = new Fg_Dashboard_Tags();
@@ -76,9 +77,11 @@ public class Dashcontent extends AppCompatActivity {
                 break;
         }
 
-        FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
-        trans.replace(R.id.multicontent,fg);
-        trans.commit();
+        if(fg != null){
+            FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
+            trans.replace(R.id.multicontent,fg);
+            trans.commit();
+        }
     }
 
 
